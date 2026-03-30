@@ -24,3 +24,7 @@ mysql_data/
 
 # Logs
 *.log
+
+# Server deploy scripts
+deploy.sh
+webhook.py
