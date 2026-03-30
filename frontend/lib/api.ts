@@ -3,12 +3,10 @@ const API_BASE =
     ? (process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost/api')
     : (process.env.NEXT_PUBLIC_API_URL || '/api');
 
-const STORAGE_BASE = process.env.NEXT_PUBLIC_STORAGE_URL || 'http://localhost/storage';
-
 export function storageUrl(path: string | null | undefined): string {
   if (!path) return '/images/placeholder.png';
   if (path.startsWith('http') || path.startsWith('/images/')) return path;
-  return `${STORAGE_BASE}/${path}`;
+  return `/storage/${path}`;
 }
 
 async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> {
