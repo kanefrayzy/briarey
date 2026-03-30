@@ -1,0 +1,1388 @@
+{
+  "categories": [
+    {
+      "sort_order": 1,
+      "name": "Дымососы ДПЭ",
+      "slug": "exhauster",
+      "products": [
+        {
+          "slug": "dymosos-dpje-7-1cm",
+          "name": "Дымосос ДПЭ-7 (1ЦМ) ДПЭ-А-К-2,0 (1500)",
+          "price": 49800,
+          "image": "products/exhauster/dymosos-dpje-7-1cm/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-1cm/1.jpg",
+            "products/exhauster/dymosos-dpje-7-1cm/2.jpg",
+            "products/exhauster/dymosos-dpje-7-1cm/3.jpg",
+            "products/exhauster/dymosos-dpje-7-1cm/4.jpg",
+            "products/exhauster/dymosos-dpje-7-1cm/5.jpg",
+            "products/exhauster/dymosos-dpje-7-1cm/6.jpg",
+            "products/exhauster/dymosos-dpje-7-1cm/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-1c",
+          "name": "Дымосос ДПЭ-7 (1Ц) ДПЭ-А-П-2,0 (1500)",
+          "price": 50800,
+          "image": "products/exhauster/dymosos-dpje-7-1c/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-1c/1.jpg",
+            "products/exhauster/dymosos-dpje-7-1c/2.jpg",
+            "products/exhauster/dymosos-dpje-7-1c/3.jpg",
+            "products/exhauster/dymosos-dpje-7-1c/4.jpg",
+            "products/exhauster/dymosos-dpje-7-1c/5.jpg",
+            "products/exhauster/dymosos-dpje-7-1c/6.jpg",
+            "products/exhauster/dymosos-dpje-7-1c/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-2cm-dpje-a-k-20-2000",
+          "name": "Дымосос ДПЭ-7 (2ЦМ) ДПЭ-А-К-2,0 (2000)",
+          "price": 57900,
+          "image": "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/1.jpg",
+            "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/2.jpg",
+            "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/3.jpg",
+            "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/4.jpg",
+            "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/5.jpg",
+            "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/6.jpg",
+            "products/exhauster/dymosos-dpje-7-2cm-dpje-a-k-20-2000/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-2c",
+          "name": "Дымосос ДПЭ-7 (2Ц) ДПЭ-А-П-2,0 (2000)",
+          "price": 59700,
+          "image": "products/exhauster/dymosos-dpje-7-2c/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-2c/1.jpg",
+            "products/exhauster/dymosos-dpje-7-2c/2.jpg",
+            "products/exhauster/dymosos-dpje-7-2c/3.jpg",
+            "products/exhauster/dymosos-dpje-7-2c/4.jpg",
+            "products/exhauster/dymosos-dpje-7-2c/5.jpg",
+            "products/exhauster/dymosos-dpje-7-2c/6.jpg",
+            "products/exhauster/dymosos-dpje-7-2c/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-25cm-dpje-a-k-25-2000",
+          "name": "Дымосос ДПЭ-7 (2,5ЦМ) ДПЭ-А-К-2,5 (2000)",
+          "price": 59700,
+          "image": "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/1.jpg",
+            "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/2.jpg",
+            "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/3.jpg",
+            "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/4.jpg",
+            "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/5.jpg",
+            "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/6.jpg",
+            "products/exhauster/dymosos-dpje-7-25cm-dpje-a-k-25-2000/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-25c-dpje-a-p-25-2000",
+          "name": "Дымосос ДПЭ-7 (2,5Ц) ДПЭ-А-П-2,5 (2000)",
+          "price": 61800,
+          "image": "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/1.jpg",
+            "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/2.jpg",
+            "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/3.jpg",
+            "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/4.jpg",
+            "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/5.jpg",
+            "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/6.jpg",
+            "products/exhauster/dymosos-dpje-7-25c-dpje-a-p-25-2000/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-4cm",
+          "name": "Дымосос ДПЭ-7 (4ЦМ)",
+          "price": 60200,
+          "image": "products/exhauster/dymosos-dpje-7-4cm/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-4cm/1.jpg",
+            "products/exhauster/dymosos-dpje-7-4cm/2.jpg",
+            "products/exhauster/dymosos-dpje-7-4cm/3.jpg",
+            "products/exhauster/dymosos-dpje-7-4cm/4.jpg",
+            "products/exhauster/dymosos-dpje-7-4cm/5.jpg",
+            "products/exhauster/dymosos-dpje-7-4cm/6.jpg",
+            "products/exhauster/dymosos-dpje-7-4cm/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-4c",
+          "name": "Дымосос ДПЭ-7 (4Ц)",
+          "price": 62300,
+          "image": "products/exhauster/dymosos-dpje-7-4c/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-4c/1.jpg",
+            "products/exhauster/dymosos-dpje-7-4c/2.jpg",
+            "products/exhauster/dymosos-dpje-7-4c/3.jpg",
+            "products/exhauster/dymosos-dpje-7-4c/4.jpg",
+            "products/exhauster/dymosos-dpje-7-4c/5.jpg",
+            "products/exhauster/dymosos-dpje-7-4c/6.jpg",
+            "products/exhauster/dymosos-dpje-7-4c/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-otm",
+          "name": "Дымосос ДПЭ-7 (4ОТМ)",
+          "price": 115500,
+          "image": "products/exhauster/dymosos-dpje-7-otm/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-otm/1.jpg",
+            "products/exhauster/dymosos-dpje-7-otm/2.jpg",
+            "products/exhauster/dymosos-dpje-7-otm/3.jpg",
+            "products/exhauster/dymosos-dpje-7-otm/4.jpg",
+            "products/exhauster/dymosos-dpje-7-otm/5.jpg",
+            "products/exhauster/dymosos-dpje-7-otm/6.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-5otm",
+          "name": "Дымосос ДПЭ-7 (5ОТМ)",
+          "price": 127600,
+          "image": "products/exhauster/dymosos-dpje-7-5otm/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-5otm/1.jpg",
+            "products/exhauster/dymosos-dpje-7-5otm/2.jpg",
+            "products/exhauster/dymosos-dpje-7-5otm/3.jpg",
+            "products/exhauster/dymosos-dpje-7-5otm/4.jpg",
+            "products/exhauster/dymosos-dpje-7-5otm/5.jpg",
+            "products/exhauster/dymosos-dpje-7-5otm/6.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-6otm",
+          "name": "Дымосос ДПЭ-7 (6ОТМ)",
+          "price": 139700,
+          "image": "products/exhauster/dymosos-dpje-7-6otm/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-6otm/1.jpg",
+            "products/exhauster/dymosos-dpje-7-6otm/2.jpg",
+            "products/exhauster/dymosos-dpje-7-6otm/3.jpg",
+            "products/exhauster/dymosos-dpje-7-6otm/4.jpg",
+            "products/exhauster/dymosos-dpje-7-6otm/5.jpg",
+            "products/exhauster/dymosos-dpje-7-6otm/6.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-ot",
+          "name": "Дымосос ДПЭ-7 (4ОТ)",
+          "price": 115000,
+          "image": "products/exhauster/dymosos-dpje-7-ot/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-ot/1.jpg",
+            "products/exhauster/dymosos-dpje-7-ot/2.jpg",
+            "products/exhauster/dymosos-dpje-7-ot/3.jpg",
+            "products/exhauster/dymosos-dpje-7-ot/4.jpg",
+            "products/exhauster/dymosos-dpje-7-ot/5.jpg",
+            "products/exhauster/dymosos-dpje-7-ot/6.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-5ot",
+          "name": "Дымосос ДПЭ-7 (5ОТ)",
+          "price": 127600,
+          "image": "products/exhauster/dymosos-dpje-7-5ot/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-5ot/1.jpg",
+            "products/exhauster/dymosos-dpje-7-5ot/2.jpg",
+            "products/exhauster/dymosos-dpje-7-5ot/3.jpg",
+            "products/exhauster/dymosos-dpje-7-5ot/4.jpg",
+            "products/exhauster/dymosos-dpje-7-5ot/5.jpg",
+            "products/exhauster/dymosos-dpje-7-5ot/6.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-6ot",
+          "name": "Дымосос ДПЭ-7 (6ОТ)",
+          "price": 139700,
+          "image": "products/exhauster/dymosos-dpje-7-6ot/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-7-6ot/1.jpg",
+            "products/exhauster/dymosos-dpje-7-6ot/2.jpg",
+            "products/exhauster/dymosos-dpje-7-6ot/3.jpg",
+            "products/exhauster/dymosos-dpje-7-6ot/4.jpg",
+            "products/exhauster/dymosos-dpje-7-6ot/5.jpg",
+            "products/exhauster/dymosos-dpje-7-6ot/6.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-a-k-25-3500",
+          "name": "Дымосос ДПЭ-А-К-2,5 (3500)",
+          "price": 60200,
+          "image": "products/exhauster/dymosos-dpje-a-k-25-3500/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-a-k-25-3500/1.jpg",
+            "products/exhauster/dymosos-dpje-a-k-25-3500/2.jpg",
+            "products/exhauster/dymosos-dpje-a-k-25-3500/3.jpg",
+            "products/exhauster/dymosos-dpje-a-k-25-3500/4.jpg",
+            "products/exhauster/dymosos-dpje-a-k-25-3500/5.jpg",
+            "products/exhauster/dymosos-dpje-a-k-25-3500/6.jpg",
+            "products/exhauster/dymosos-dpje-a-k-25-3500/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-a-p-25-3500",
+          "name": "Дымосос ДПЭ-А-П-2,5 (3500)",
+          "price": 62300,
+          "image": "products/exhauster/dymosos-dpje-a-p-25-3500/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-a-p-25-3500/1.jpg",
+            "products/exhauster/dymosos-dpje-a-p-25-3500/2.jpg",
+            "products/exhauster/dymosos-dpje-a-p-25-3500/3.jpg",
+            "products/exhauster/dymosos-dpje-a-p-25-3500/4.jpg",
+            "products/exhauster/dymosos-dpje-a-p-25-3500/5.jpg",
+            "products/exhauster/dymosos-dpje-a-p-25-3500/6.jpg",
+            "products/exhauster/dymosos-dpje-a-p-25-3500/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-a-p-315-4000",
+          "name": "Дымосос ДПЭ-А-П-3,15 (4000)",
+          "price": 63600,
+          "image": "products/exhauster/dymosos-dpje-a-p-315-4000/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-a-p-315-4000/1.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-4000/2.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-4000/3.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-4000/4.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-4000/5.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-4000/6.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-4000/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-a-p-315-5000",
+          "name": "Дымосос ДПЭ-А-П-3,15 (5000)",
+          "price": 94600,
+          "image": "products/exhauster/dymosos-dpje-a-p-315-5000/1.jpg",
+          "images": [
+            "products/exhauster/dymosos-dpje-a-p-315-5000/1.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-5000/2.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-5000/3.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-5000/4.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-5000/5.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-5000/6.jpg",
+            "products/exhauster/dymosos-dpje-a-p-315-5000/7.jpg"
+          ],
+          "composition": [
+            "рукав всасывающий - 5м"
+          ],
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sort_order": 2,
+      "name": "Дымососы для пожарных автомобилей",
+      "slug": "dyimososyi-dlya-pozharnyix-avtomobilej",
+      "products": [
+        {
+          "slug": "egeon-30m",
+          "name": "Дымосос ЭГЕОН-30М",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-30m/1.png",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-30m/1.png",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-30m/2.png",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-30m/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-30m/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "egeon-40m",
+          "name": "Дымосос ЭГЕОН-40М",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-40m/1.png",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-40m/1.png",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-40m/2.png",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-40m/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/egeon-40m/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dyimosos-egeon-45e",
+          "name": "Дымосос ЭГЕОН-30Э",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-egeon-45e/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-egeon-45e/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-egeon-45e/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-egeon-45e/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-egeon-45e/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dyimosos-dpe-7-(4otp",
+          "name": "Дымосос ДПЭ-7 (4ОТП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-dpe-7-(4otp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-dpe-7-(4otp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-dpe-7-(4otp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-dpe-7-(4otp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-dpe-7-(4otp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dyimosos-dpe-7-(4otp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-5otp",
+          "name": "Дымосос ДПЭ-7 (5ОТП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-5otp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-5otp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-5otp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-5otp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-5otp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-5otp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-6otp",
+          "name": "Дымосос ДПЭ-7 (6ОТП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-6otp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-6otp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-6otp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-6otp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-6otp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-6otp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-2cp",
+          "name": "Дымосос ДПЭ-7 (2ЦП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-2cp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-2cp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-2cp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-2cp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-2cp/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpje-7-4cp",
+          "name": "Дымосос ДПЭ-7 (4ЦП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-4cp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-4cp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-4cp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-4cp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-4cp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpje-7-4cp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpm-7-2cp",
+          "name": "Дымосос ДПМ-7 (2ЦП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-2cp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-2cp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-2cp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-2cp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-2cp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-2cp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpm-7-4cp",
+          "name": "Дымосос ДПМ-7 (4ЦП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4cp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4cp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4cp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4cp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4cp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4cp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpm-7-4otp",
+          "name": "Дымосос ДПМ-7 (4ОТП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4otp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4otp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4otp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4otp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4otp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-4otp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpm-7-5otp",
+          "name": "Дымосос ДПМ-7 (5ОТП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-5otp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-5otp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-5otp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-5otp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-5otp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-5otp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dymosos-dpm-7-6otp",
+          "name": "Дымосос ДПМ-7 (6ОТП)",
+          "price": 0,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-6otp/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-6otp/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-6otp/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-6otp/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-6otp/4.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/dymosos-dpm-7-6otp/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "penogenerator",
+          "name": "Адаптер-пеногенератор ПГ-400 для пожарных дымососов типа ДПЭ-7 *ОТП и ДПМ-7 *ОТП",
+          "price": 81400,
+          "image": "products/dyimososyi-dlya-pozharnyix-avtomobilej/penogenerator/1.jpg",
+          "images": [
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/penogenerator/1.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/penogenerator/2.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/penogenerator/3.jpg",
+            "products/dyimososyi-dlya-pozharnyix-avtomobilej/penogenerator/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sort_order": 3,
+      "name": "Узлы стыковочные",
+      "slug": "nodes-connecting",
+      "products": [
+        {
+          "slug": "uzel-stykovochnyj-vp-200h200-mm",
+          "name": "Узел стыковочный СУ-ВП Бриарей 200х200 мм",
+          "price": 20300,
+          "image": "products/nodes-connecting/uzel-stykovochnyj-vp-200h200-mm/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyj-vp-200h200-mm/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-vp-200h200-mm/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-vp-200h200-mm/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyi-vp-us-vp-300h300-mm",
+          "name": "Узел стыковочный СУ-ВП Бриарей 300х300 мм",
+          "price": 20300,
+          "image": "products/nodes-connecting/uzel-stykovochnyi-vp-us-vp-300h300-mm/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyi-vp-us-vp-300h300-mm/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-vp-us-vp-300h300-mm/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-vp-us-vp-300h300-mm/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyj-vp-400h400-mm",
+          "name": "Узел стыковочный СУ-ВП Бриарей 400х400 мм",
+          "price": 21800,
+          "image": "products/nodes-connecting/uzel-stykovochnyj-vp-400h400-mm/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyj-vp-400h400-mm/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-vp-400h400-mm/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-vp-400h400-mm/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyj-v",
+          "name": "Узел стыковочный СУ-В Бриарей 300х300мм",
+          "price": 20300,
+          "image": "products/nodes-connecting/uzel-stykovochnyj-v/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyj-v/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-v/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-v/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyi-stenovoj",
+          "name": "Узел стыковочный Стеновой",
+          "price": 17600,
+          "image": "products/nodes-connecting/uzel-stykovochnyi-stenovoj/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyi-stenovoj/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-stenovoj/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-stenovoj/3.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-stenovoj/4.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-stenovoj/5.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-stenovoj/6.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-stenovoj/7.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyi-dvernoi-su-am-d",
+          "name": "Узел стыковочный Дверной",
+          "price": 19200,
+          "image": "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/3.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/4.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/5.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/6.jpg",
+            "products/nodes-connecting/uzel-stykovochnyi-dvernoi-su-am-d/7.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyj-su-a-315s",
+          "name": "Узел стыковочный СУ-А-3,15С",
+          "price": 20900,
+          "image": "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/3.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/4.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/5.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/6.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315s/7.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyj-su-a-315d",
+          "name": "Узел стыковочный СУ-А-3,15Д",
+          "price": 22400,
+          "image": "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/3.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/4.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/5.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/6.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-su-a-315d/7.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyj-vv",
+          "name": "Узел стыковочный СУ-ВВ Бриарей 200х200мм",
+          "price": 9700,
+          "image": "products/nodes-connecting/uzel-stykovochnyj-vv/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyj-vv/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-vv/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-vv/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-stykovochnyj-du",
+          "name": "Узел стыковочный СУ-ДУ Бриарей 300х300мм",
+          "price": 20900,
+          "image": "products/nodes-connecting/uzel-stykovochnyj-du/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-stykovochnyj-du/1.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-du/2.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-du/3.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-du/4.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-du/5.jpg",
+            "products/nodes-connecting/uzel-stykovochnyj-du/6.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "uzel-styikovochnyij-vp-ui-(300x300-mm)-(ulichnoe-ispolnenie",
+          "name": "Узел стыковочный ВП УИ 300х300 мм уличное исполнение",
+          "price": 25600,
+          "image": "products/nodes-connecting/uzel-styikovochnyij-vp-ui-(300x300-mm)-(ulichnoe-ispolnenie/1.jpg",
+          "images": [
+            "products/nodes-connecting/uzel-styikovochnyij-vp-ui-(300x300-mm)-(ulichnoe-ispolnenie/1.jpg",
+            "products/nodes-connecting/uzel-styikovochnyij-vp-ui-(300x300-mm)-(ulichnoe-ispolnenie/2.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sort_order": 4,
+      "name": "Клапаны сброса избыточного давления КСИД",
+      "slug": "relief-valves",
+      "products": [
+        {
+          "slug": "ksid-150-015",
+          "name": "Клапан сброса избыточного давления КСИД 150-0,15",
+          "price": 17500,
+          "image": "products/relief-valves/ksid-150-015/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-150-015/1.jpg",
+            "products/relief-valves/ksid-150-015/2.jpg",
+            "products/relief-valves/ksid-150-015/3.jpg",
+            "products/relief-valves/ksid-150-015/4.jpg",
+            "products/relief-valves/ksid-150-015/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-300-0,15",
+          "name": "Клапан сброса избыточного давления КСИД 300-0,15",
+          "price": 18500,
+          "image": "products/relief-valves/ksid-300-0,15/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-300-0,15/1.jpg",
+            "products/relief-valves/ksid-300-0,15/2.jpg",
+            "products/relief-valves/ksid-300-0,15/3.jpg",
+            "products/relief-valves/ksid-300-0,15/4.jpg",
+            "products/relief-valves/ksid-300-0,15/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-450-0,15",
+          "name": "Клапан сброса избыточного давления КСИД 450-0,15",
+          "price": 19600,
+          "image": "products/relief-valves/ksid-450-0,15/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-450-0,15/1.jpg",
+            "products/relief-valves/ksid-450-0,15/2.jpg",
+            "products/relief-valves/ksid-450-0,15/3.jpg",
+            "products/relief-valves/ksid-450-0,15/4.jpg",
+            "products/relief-valves/ksid-450-0,15/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-600-05",
+          "name": "Клапан сброса избыточного давления КСИД 600-0,5",
+          "price": 23900,
+          "image": "products/relief-valves/ksid-600-05/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-600-05/1.jpg",
+            "products/relief-valves/ksid-600-05/2.jpg",
+            "products/relief-valves/ksid-600-05/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-600-12",
+          "name": "Клапан сброса избыточного давления КСИД 600-1,2",
+          "price": 24500,
+          "image": "products/relief-valves/ksid-600-12/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-600-12/1.jpg",
+            "products/relief-valves/ksid-600-12/2.jpg",
+            "products/relief-valves/ksid-600-12/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-1000-0,15",
+          "name": "Клапан сброса избыточного давления КСИД 1000-0,15",
+          "price": 35900,
+          "image": "products/relief-valves/ksid-1000-0,15/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-1000-0,15/1.jpg",
+            "products/relief-valves/ksid-1000-0,15/2.jpg",
+            "products/relief-valves/ksid-1000-0,15/3.jpg",
+            "products/relief-valves/ksid-1000-0,15/4.jpg",
+            "products/relief-valves/ksid-1000-0,15/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-1200-05",
+          "name": "Клапан сброса избыточного давления КСИД 1200-0,5",
+          "price": 37400,
+          "image": "products/relief-valves/ksid-1200-05/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-1200-05/1.jpg",
+            "products/relief-valves/ksid-1200-05/2.jpg",
+            "products/relief-valves/ksid-1200-05/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-1200-12",
+          "name": "Клапан сброса избыточного давления КСИД 1200-1,2",
+          "price": 38100,
+          "image": "products/relief-valves/ksid-1200-12/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-1200-12/1.jpg",
+            "products/relief-valves/ksid-1200-12/2.jpg",
+            "products/relief-valves/ksid-1200-12/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "klsid-1500-015",
+          "name": "Клапан сброса избыточного давления КСИД 1500-0,15",
+          "price": 38600,
+          "image": "products/relief-valves/klsid-1500-015/1.jpg",
+          "images": [
+            "products/relief-valves/klsid-1500-015/1.jpg",
+            "products/relief-valves/klsid-1500-015/2.jpg",
+            "products/relief-valves/klsid-1500-015/3.jpg",
+            "products/relief-valves/klsid-1500-015/4.jpg",
+            "products/relief-valves/klsid-1500-015/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-1800-05",
+          "name": "Клапан сброса избыточного давления КСИД 1800-0,5",
+          "price": 40800,
+          "image": "products/relief-valves/ksid-1800-05/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-1800-05/1.jpg",
+            "products/relief-valves/ksid-1800-05/2.jpg",
+            "products/relief-valves/ksid-1800-05/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-1800-12",
+          "name": "Клапан сброса избыточного давления КСИД 1800-1,2",
+          "price": 42200,
+          "image": "products/relief-valves/ksid-1800-12/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-1800-12/1.jpg",
+            "products/relief-valves/ksid-1800-12/2.jpg",
+            "products/relief-valves/ksid-1800-12/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ksid-2000-0,15",
+          "name": "Клапан сброса избыточного давления КСИД 2000-0,15",
+          "price": 42400,
+          "image": "products/relief-valves/ksid-2000-0,15/1.jpg",
+          "images": [
+            "products/relief-valves/ksid-2000-0,15/1.jpg",
+            "products/relief-valves/ksid-2000-0,15/2.jpg",
+            "products/relief-valves/ksid-2000-0,15/3.jpg",
+            "products/relief-valves/ksid-2000-0,15/4.jpg",
+            "products/relief-valves/ksid-2000-0,15/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-150",
+          "name": "Решетка защитная РДК-150 для КСИД 150",
+          "price": 3000,
+          "image": "products/relief-valves/rdk-150/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-150/1.jpg",
+            "products/relief-valves/rdk-150/2.jpg",
+            "products/relief-valves/rdk-150/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-300",
+          "name": "Решетка защитная РДК-300 для КСИД 300",
+          "price": 3400,
+          "image": "products/relief-valves/rdk-300/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-300/1.jpg",
+            "products/relief-valves/rdk-300/2.jpg",
+            "products/relief-valves/rdk-300/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-450",
+          "name": "Решетка защитная РДК-450 для КСИД 450",
+          "price": 3800,
+          "image": "products/relief-valves/rdk-450/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-450/1.jpg",
+            "products/relief-valves/rdk-450/2.jpg",
+            "products/relief-valves/rdk-450/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-600",
+          "name": "Решетка защитная РДК-600 для КСИД 600",
+          "price": 4100,
+          "image": "products/relief-valves/rdk-600/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-600/1.jpg",
+            "products/relief-valves/rdk-600/2.jpg",
+            "products/relief-valves/rdk-600/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-1000",
+          "name": "Решетка защитная РДК-1000 для КСИД 1000",
+          "price": 6000,
+          "image": "products/relief-valves/rdk-1000/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-1000/1.jpg",
+            "products/relief-valves/rdk-1000/2.jpg",
+            "products/relief-valves/rdk-1000/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-1200",
+          "name": "Решетка защитная РДК-1200 для КСИД 1200",
+          "price": 6500,
+          "image": "products/relief-valves/rdk-1200/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-1200/1.jpg",
+            "products/relief-valves/rdk-1200/2.jpg",
+            "products/relief-valves/rdk-1200/3.jpg",
+            "products/relief-valves/rdk-1200/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-1500",
+          "name": "Решетка защитная РДК-1500 для КСИД 1500",
+          "price": 7300,
+          "image": "products/relief-valves/rdk-1500/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-1500/1.jpg",
+            "products/relief-valves/rdk-1500/2.jpg",
+            "products/relief-valves/rdk-1500/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-1800",
+          "name": "Решетка защитная РДК-1800 для КСИД 1800",
+          "price": 9000,
+          "image": "products/relief-valves/rdk-1800/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-1800/1.jpg",
+            "products/relief-valves/rdk-1800/2.jpg",
+            "products/relief-valves/rdk-1800/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rdk-2000",
+          "name": "Решетка защитная РДК-2000 для КСИД 2000",
+          "price": 9000,
+          "image": "products/relief-valves/rdk-2000/1.jpg",
+          "images": [
+            "products/relief-valves/rdk-2000/1.jpg",
+            "products/relief-valves/rdk-2000/2.jpg",
+            "products/relief-valves/rdk-2000/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sort_order": 5,
+      "name": "Шкафы для хранения ШДП и ШСП",
+      "slug": "storage-cabinets",
+      "products": [
+        {
+          "slug": "shkaf-dlja-hranenija-shdp-shdpje",
+          "name": "Шкаф для хранения ШДП-2",
+          "price": 29700,
+          "image": "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/1.jpg",
+          "images": [
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/1.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/2.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/3.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/4.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/5.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/6.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-shdpje/7.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "shkaf-dlja-hranenija-shpd-3",
+          "name": "Шкаф для хранения ШДП-3",
+          "price": 37000,
+          "image": "products/storage-cabinets/shkaf-dlja-hranenija-shpd-3/1.jpg",
+          "images": [
+            "products/storage-cabinets/shkaf-dlja-hranenija-shpd-3/1.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shpd-3/2.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shpd-3/3.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shpd-3/4.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shpd-3/5.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shpd-3/6.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "shkaf-dlja-hranenija-shdp-315",
+          "name": "Шкаф для хранения ШДП-3,15",
+          "price": 60300,
+          "image": "products/storage-cabinets/shkaf-dlja-hranenija-shdp-315/1.jpg",
+          "images": [
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-315/1.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-315/2.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-315/3.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-315/4.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-shdp-315/5.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "shkaf-dlja-hranenija-samospasatelej-shsp",
+          "name": "Шкаф для хранения самоспасателей ШСП",
+          "price": 14500,
+          "image": "products/storage-cabinets/shkaf-dlja-hranenija-samospasatelej-shsp/1.jpg",
+          "images": [
+            "products/storage-cabinets/shkaf-dlja-hranenija-samospasatelej-shsp/1.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-samospasatelej-shsp/2.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-samospasatelej-shsp/3.jpg",
+            "products/storage-cabinets/shkaf-dlja-hranenija-samospasatelej-shsp/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sort_order": 6,
+      "name": "Установки сбора огнетушащего вещества",
+      "slug": "installations",
+      "products": [
+        {
+          "slug": "ustanovka-filtrujushhaja-uf-3",
+          "name": "Установка фильтрующая УФ-3",
+          "price": 38300,
+          "image": "products/installations/ustanovka-filtrujushhaja-uf-3/1.jpg",
+          "images": [
+            "products/installations/ustanovka-filtrujushhaja-uf-3/1.jpg",
+            "products/installations/ustanovka-filtrujushhaja-uf-3/2.jpg",
+            "products/installations/ustanovka-filtrujushhaja-uf-3/3.jpg",
+            "products/installations/ustanovka-filtrujushhaja-uf-3/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ustanovka-vakuumnoi-pyleuborki-uvp-5",
+          "name": "Установка для сбора огнетушащего вещества УВП-5",
+          "price": 47100,
+          "image": "products/installations/ustanovka-vakuumnoi-pyleuborki-uvp-5/1.jpg",
+          "images": [
+            "products/installations/ustanovka-vakuumnoi-pyleuborki-uvp-5/1.jpg",
+            "products/installations/ustanovka-vakuumnoi-pyleuborki-uvp-5/2.jpg",
+            "products/installations/ustanovka-vakuumnoi-pyleuborki-uvp-5/3.jpg",
+            "products/installations/ustanovka-vakuumnoi-pyleuborki-uvp-5/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "ustanovka-vakuumnoj-pyleuborki-uvp-7",
+          "name": "Установка вакуумной пылеуборки УВП-7",
+          "price": 110000,
+          "image": "products/installations/ustanovka-vakuumnoj-pyleuborki-uvp-7/1.jpg",
+          "images": [
+            "products/installations/ustanovka-vakuumnoj-pyleuborki-uvp-7/1.jpg",
+            "products/installations/ustanovka-vakuumnoj-pyleuborki-uvp-7/2.jpg",
+            "products/installations/ustanovka-vakuumnoj-pyleuborki-uvp-7/3.jpg",
+            "products/installations/ustanovka-vakuumnoj-pyleuborki-uvp-7/4.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sort_order": 7,
+      "name": "Дополнительное противопожарное оборудование",
+      "slug": "optional-equipment",
+      "products": [
+        {
+          "slug": "dymosos-dpje-7-1r",
+          "name": "Дымосос ДПЭ-7 1Р",
+          "price": 19200,
+          "image": "products/optional-equipment/dymosos-dpje-7-1r/1.jpg",
+          "images": [
+            "products/optional-equipment/dymosos-dpje-7-1r/1.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/2.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/3.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/4.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/5.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/6.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/7.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/8.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/9.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/10.jpg",
+            "products/optional-equipment/dymosos-dpje-7-1r/11.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "adapter-vytjazhnoi-dlja-uzla-stykovochn-2",
+          "name": "Адаптер вытяжной для узла стыковочного СУ-ВВ Бриарей",
+          "price": 4000,
+          "image": "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn-2/1.jpg",
+          "images": [
+            "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn-2/1.jpg",
+            "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn-2/2.jpg",
+            "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn-2/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "adapter-vytjazhnoi-dlja-uzla-stykovochn",
+          "name": "Адаптер вытяжной для узла стыковочного СУ-В Бриарей 300х300мм",
+          "price": 0,
+          "image": "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn/1.jpg",
+          "images": [
+            "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn/1.jpg",
+            "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn/2.jpg",
+            "products/optional-equipment/adapter-vytjazhnoi-dlja-uzla-stykovochn/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "adapter-pritochno-vytjazhnoi-dlja-uzla-s",
+          "name": "Адаптер приточно-вытяжной для узла стыковочного СУ-ВП Бриарей 300х300мм",
+          "price": 0,
+          "image": "products/optional-equipment/adapter-pritochno-vytjazhnoi-dlja-uzla-s/1.jpg",
+          "images": [
+            "products/optional-equipment/adapter-pritochno-vytjazhnoi-dlja-uzla-s/1.jpg",
+            "products/optional-equipment/adapter-pritochno-vytjazhnoi-dlja-uzla-s/2.jpg",
+            "products/optional-equipment/adapter-pritochno-vytjazhnoi-dlja-uzla-s/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rukav-vsasyvajushhii-dopolnitelnyi-2",
+          "name": "Рукав всасывающий дополнительный РВ",
+          "price": 0,
+          "image": "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/1.jpg",
+          "images": [
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/1.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/2.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/3.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/4.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/5.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/6.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/7.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/8.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/9.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/10.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi-2/11.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rukav-napornyi-dopolnitelnyi-rn",
+          "name": "Рукав напорный дополнительный РН",
+          "price": 0,
+          "image": "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/1.jpg",
+          "images": [
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/1.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/2.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/3.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/4.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/5.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/6.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/7.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/8.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/9.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/10.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-rn/11.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "vsasyvajushhaja-dvuhzonnaja-obvjazka",
+          "name": "Всасывающая двухзонная обвязка",
+          "price": 0,
+          "image": "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/1.jpg",
+          "images": [
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/1.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/2.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/3.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/4.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/5.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/6.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/7.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/8.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/9.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/10.jpg",
+            "products/optional-equipment/vsasyvajushhaja-dvuhzonnaja-obvjazka/11.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rukav-vsasyvajushhii-dopolnitelnyi",
+          "name": "Рукав всасывающий дополнительный брезентовый РВ",
+          "price": 0,
+          "image": "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/1.jpg",
+          "images": [
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/1.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/2.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/3.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/4.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/5.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/6.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/7.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/8.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/9.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/10.jpg",
+            "products/optional-equipment/rukav-vsasyvajushhii-dopolnitelnyi/11.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rukav-napornyi-dopolnitelnyi-bre",
+          "name": "Рукав напорный дополнительный брезентовый РН",
+          "price": 0,
+          "image": "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/1.jpg",
+          "images": [
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/1.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/2.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/3.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/4.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/5.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/6.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/7.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/8.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/9.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/10.jpg",
+            "products/optional-equipment/rukav-napornyi-dopolnitelnyi-bre/11.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu",
+          "name": "Рукав всасывающий дополнительный РВ из ткани Oxford до 200 градусов по Цельсию",
+          "price": 15600,
+          "image": "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/1.jpg",
+          "images": [
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/1.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/2.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/3.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/4.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/5.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/6.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/7.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/8.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/9.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/10.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/11.jpg",
+            "products/optional-equipment/rukav-vsasyivayushhij-dopolnitelnyij-rv-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/12.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu",
+          "name": "Рукав напорный дополнительный РН из ткани Oxford до 200 градусов по Цельсию",
+          "price": 15600,
+          "image": "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/1.jpg",
+          "images": [
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/1.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/2.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/3.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/4.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/5.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/6.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/7.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/8.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/9.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/10.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/11.jpg",
+            "products/optional-equipment/rukav-napornyij-dopolnitelnyij-rn-iz-tkani-oxford-do-200-gradusov-po-czelsiyu/12.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        }
+      ]
+    },
+    {
+      "sort_order": 8,
+      "name": "Двери противопожарные",
+      "slug": "fireproof-doors",
+      "products": [
+        {
+          "slug": "dver-protivopozharnaja-s-dvumja-stykov",
+          "name": "Дверь противопожарная с двумя стыковочными узлами Дверными (двухзонное удаление)",
+          "price": 110000,
+          "image": "products/fireproof-doors/dver-protivopozharnaja-s-dvumja-stykov/1.jpg",
+          "images": [
+            "products/fireproof-doors/dver-protivopozharnaja-s-dvumja-stykov/1.jpg",
+            "products/fireproof-doors/dver-protivopozharnaja-s-dvumja-stykov/2.jpg",
+            "products/fireproof-doors/dver-protivopozharnaja-s-dvumja-stykov/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        },
+        {
+          "slug": "dver-protivopozharnaja-s-uzlom-stykov",
+          "name": "Дверь противопожарная с узлом стыковочным Дверным",
+          "price": 85000,
+          "image": "products/fireproof-doors/dver-protivopozharnaja-s-uzlom-stykov/1.jpg",
+          "images": [
+            "products/fireproof-doors/dver-protivopozharnaja-s-uzlom-stykov/1.jpg",
+            "products/fireproof-doors/dver-protivopozharnaja-s-uzlom-stykov/2.jpg",
+            "products/fireproof-doors/dver-protivopozharnaja-s-uzlom-stykov/3.jpg"
+          ],
+          "composition": [],
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "total_products": 84
+}
