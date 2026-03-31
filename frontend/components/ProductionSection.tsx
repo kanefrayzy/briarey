@@ -28,9 +28,10 @@ const defaultFeatures = [
 interface ProductionSectionProps {
   section?: ProdSection
   features?: ProductionFeature[]
+  hideButton?: boolean
 }
 
-export default function ProductionSection({ section, features: apiFeatures }: ProductionSectionProps) {
+export default function ProductionSection({ section, features: apiFeatures, hideButton }: ProductionSectionProps) {
   const items = apiFeatures?.length
     ? apiFeatures.map(f => ({ title: f.title, desc: f.description, image: storageUrl(f.image) }))
     : defaultFeatures
@@ -77,9 +78,11 @@ export default function ProductionSection({ section, features: apiFeatures }: Pr
         </div>
 
         {/* Кнопка */}
-        <Button href={buttonLink} variant="catalog" className="!max-w-none w-full !justify-center py-4 text-base">
-          {buttonText}
-        </Button>
+        {!hideButton && (
+          <Button href={buttonLink} variant="catalog" className="!max-w-none w-full !justify-center py-4 text-base">
+            {buttonText}
+          </Button>
+        )}
       </div>
 
       {/* ── DESKTOP (без изменений) ── */}
@@ -105,9 +108,11 @@ export default function ProductionSection({ section, features: apiFeatures }: Pr
                 <p className="text-brand-gray text-sm leading-loose max-w-[70%]">{f.desc}</p>
               </button>
             ))}
-            <div className="mt-2">
-              <Button href={buttonLink} variant="catalog">{buttonText}</Button>
-            </div>
+            {!hideButton && (
+              <div className="mt-2">
+                <Button href={buttonLink} variant="catalog">{buttonText}</Button>
+              </div>
+            )}
           </div>
 
           {/* Правый блок — изображение */}

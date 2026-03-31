@@ -36,14 +36,15 @@ export default function MobileSearch({ open, onToggle }: Props) {
         className="absolute right-14 top-1/2 -translate-y-1/2 flex items-center transition-all duration-300 ease-in-out overflow-hidden"
         style={{
           height: '44px',
-          width: open ? 'calc(100vw - 120px)' : '0px',
+          width: open ? 'calc(100vw - 150px)' : '0px',
+          maxWidth: open ? '320px' : '0px',
           opacity: open ? 1 : 0,
           pointerEvents: open ? 'auto' : 'none',
-          background: 'rgba(255,255,255,0.08)',
+          background: 'rgba(30, 30, 40, 0.92)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderRadius: '999px',
-          border: open ? '1px solid rgba(255,255,255,0.15)' : '1px solid transparent',
+          border: open ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent',
         }}
       >
         {/* Search icon inside input */}

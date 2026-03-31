@@ -57,6 +57,7 @@ export default async function AboutPage() {
         <ProductionSection
           section={homeData?.production_section}
           features={homeData?.production_features}
+          hideButton
         />
 
         {/* 5. Фотослайдер производства */}

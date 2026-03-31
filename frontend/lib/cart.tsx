@@ -9,6 +9,12 @@ export interface CartExtra {
   qty: number
 }
 
+export interface CartSpec {
+  key: string
+  label: string
+  value: string
+}
+
 export interface CartItem {
   productId: number
   slug: string
@@ -17,6 +23,7 @@ export interface CartItem {
   price: number
   qty: number
   extras: CartExtra[]
+  specs?: CartSpec[]
   configuration?: { suction_length: number; exhaust_length: number; hoseCost: number }
 }
 

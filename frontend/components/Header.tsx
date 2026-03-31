@@ -7,12 +7,12 @@ import NavMenu from './NavMenu'
 import MobileSearch from './MobileSearch'
 import PhoneIcon from './icons/PhoneIcon'
 import MailIcon from './icons/MailIcon'
-import ChevronDownIcon from './icons/ChevronDownIcon'
 import CartIcon from './icons/CartIcon'
 import SearchIcon from './icons/SearchIcon'
 import CloseIcon from './icons/CloseIcon'
 import BurgerIcon from './icons/BurgerIcon'
 import type { SiteSettings } from '@/lib/api'
+import { api } from '@/lib/api'
 import { useCart } from '@/lib/cart'
 import { SearchDropdown, useProductSearch } from './SearchDropdown'
 
@@ -20,9 +20,17 @@ interface HeaderProps {
   settings?: SiteSettings
 }
 
-export default function Header({ settings }: HeaderProps) {
-  const phone1 = settings?.phone_1 || '8 (800) 201-85-88'
-  const phone2 = settings?.phone_2 || '8 (916) 707-57-77'
+export default function Header({ settings: settingsProp }: HeaderProps) {
+  const [settings, setSettings] = useState<SiteSettings | undefined>(settingsProp)
+
+  useEffect(() => {
+    if (!settingsProp) {
+      api.getSiteSettings().then(s => setSettings(s)).catch(() => {})
+    }
+  }, [settingsProp])
+
+  const phone1 = settings?.phone_1 || '8 (499) 713-70-79'
+  const phone2 = settings?.phone_2 || '8 (901) 183-70-79'
   const email = settings?.email || 'info@briarey.ru'
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -61,7 +69,7 @@ export default function Header({ settings }: HeaderProps) {
         <div className="max-w-[1440px] mx-auto px-6 py-1.5 flex flex-wrap items-center justify-center gap-x-8 gap-y-1 text-xs text-white/90">
           <Link href="/about" className="hover:text-white transition-colors">О компании</Link>
           <Link href="/dealers" className="hover:text-white transition-colors">Диллерам</Link>
-          <Link href="/delivery" className="hover:text-white transition-colors">Доставка</Link>
+          <Link href="/certificates" className="hover:text-white transition-colors">Доставка</Link>
           <a href={`tel:${phone1.replace(/[^\d+]/g, '')}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
             <PhoneIcon />{phone1}
           </a>
@@ -99,16 +107,11 @@ export default function Header({ settings }: HeaderProps) {
 
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-8 ml-2">
-            <button className="flex items-center gap-1 text-white/70 hover:text-white transition-colors text-sm font-medium">
-              Оборудование
-              <ChevronDownIcon />
-            </button>
-            <button className="flex items-center gap-1 text-white/70 hover:text-white transition-colors text-sm font-medium">
+            <Link href="/catalog" className="text-white/70 hover:text-white transition-colors text-sm font-medium">
+              Каталог
+            </Link>
+            <Link href="/certificates" className="text-white/70 hover:text-white transition-colors text-sm font-medium">
               Техдокументация
-              <ChevronDownIcon />
-            </button>
-            <Link href="/press" className="text-white/70 hover:text-white transition-colors text-sm font-medium">
-              Пресс служба
             </Link>
           </div>
 
@@ -179,7 +182,7 @@ export default function Header({ settings }: HeaderProps) {
               ) : (
                 <button
                   onClick={() => setDesktopSearchOpen(true)}
-                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white border border-white/25 hover:border-white/50 rounded-full px-4 py-2 transition-colors"
+                  className="flex items-center gap-2 text-sm text-white/70 hover:text-white border border-white/20 hover:border-white/40 bg-transparent hover:bg-white/8 rounded-full px-4 py-2 transition-colors"
                 >
                   Поиск
                   <SearchIcon />
@@ -198,7 +201,7 @@ export default function Header({ settings }: HeaderProps) {
             </div>
 
             {/* Desktop: Консультация */}
-            <Link href="/consultation" className="hidden md:flex text-sm text-white/70 hover:text-white border border-white/25 hover:border-white/50 rounded-full px-5 py-2 transition-colors">
+            <Link href="/#contact-form" className="hidden md:flex text-sm text-white/70 hover:text-white border border-white/25 hover:border-white/50 rounded-full px-5 py-2 transition-colors">
               Консультация
             </Link>
 

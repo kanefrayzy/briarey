@@ -47,23 +47,10 @@ const SLIDES = [
     icon: TruckFilledIcon,
     statTitle: 'Быстрая доставка по всей РФ',
     statDesc: 'Складские запасы и отгрузка\nза 1–3 дня.',
-    nextFeature: 'Оборудование для\nфедеральных и\nмуниципальных служб',
+    nextFeature: 'Собственное\nпроизводство\n(95% ассортимента)',
     buttonLabel: 'Калькулятор оборудования',
     buttonHref: '/calculator',
     buttonVariant: 'calculator' as const,
-  },
-  {
-    id: 4,
-    image: '/images/slide-4.png',
-    title: 'Дочерняя компания\n«Эгеон»',
-    subtitle: 'Новая линейка для личного состава',
-    icon: SnowflakeIcon,
-    statTitle: 'Дымососы для пожарных\nмашин',
-    statDesc: 'Высокая отказоустойчивость\nи автономность оборудования',
-    nextFeature: 'Собственное\nпроизводство\n(95% ассортимента)',
-    buttonLabel: 'Сайт «Эгеон»',
-    buttonHref: 'https://egeon.ru',
-    buttonVariant: 'catalog' as const,
   },
 ]
 
@@ -136,10 +123,10 @@ export default function SliderSection({ showSmoke = true, slides: apiSlides }: S
   const slide = SLIDES_DATA[current]
 
   return (
-    <section className="relative w-full">
+    <section id="slider-section" className="relative w-full">
 
       {/* ─── Продолжение дыма сверху — затухает в слайдере ─── */}
-      {showSmoke && <SmokeOverlay position="top" />}
+      {showSmoke && <SmokeOverlay position="top" height="18%" />}
 
       {/* ─── Контейнер ─── */}
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}

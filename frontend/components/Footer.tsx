@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Button from './Button'
 import FacebookIcon from './icons/FacebookIcon'
 import YouTubeIcon from './icons/YouTubeIcon'
@@ -20,7 +20,7 @@ const navColumns = [
   {
     heading: 'Информация',
     links: ['Видео инструкции', 'Вопросы', 'СНиПы', 'Законы'],
-    hrefs: ['/video', '/faq', '/snips', '/laws'],
+    hrefs: ['/#slider-section', '/certificates#faq', '/certificates', '/certificates'],
   },
   {
     heading: 'Оборудование',
@@ -35,18 +35,18 @@ const navColumns = [
     ],
     hrefs: [
       '/catalog/dymososy',
-      '/catalog/uzel',
-      '/catalog/klapana',
-      '/catalog/dop',
-      '/catalog/shkafy',
-      '/catalog/dveri',
-      '/catalog/ustanovki',
+      '/catalog/uzel-stykovochnyj',
+      '/catalog/klapana-sbrosa',
+      '/catalog/dop-oborudovanie',
+      '/catalog/shkafy-dlya-hraneniya',
+      '/catalog/dveri-protivopozharnye',
+      '/catalog/ustanovki-sbora-veshchestva',
     ],
   },
   {
     heading: 'Группа компаний',
-    links: ['О компании', 'Диллерам', '«Эгеон»'],
-    hrefs: ['/about', '/dealers', '/egeon'],
+    links: ['О компании', 'Диллерам'],
+    hrefs: ['/about', '/dealers'],
   },
 ]
 
@@ -54,9 +54,16 @@ interface FooterProps {
   settings?: SiteSettings
 }
 
-export default function Footer({ settings }: FooterProps) {
+export default function Footer({ settings: settingsProp }: FooterProps) {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [settings, setSettings] = useState<SiteSettings | undefined>(settingsProp)
+
+  useEffect(() => {
+    if (!settingsProp) {
+      api.getSiteSettings().then(s => setSettings(s)).catch(() => {})
+    }
+  }, [settingsProp])
 
   const phone1 = settings?.phone_1 || '+7 (499) 713-70-79'
   const phone2 = settings?.phone_2 || '+7 (901) 183-70-79'
@@ -78,7 +85,7 @@ export default function Footer({ settings }: FooterProps) {
   }
 
   return (
-    <footer style={{ background: '#1a1a1a' }} className="overflow-x-hidden">
+    <footer id="footer-contacts" style={{ background: '#1a1a1a' }} className="overflow-x-hidden">
 
       {/* ===== MOBILE ===== */}
       <div className="flex md:hidden flex-col px-4 pt-10 pb-6 gap-8">
@@ -188,7 +195,7 @@ export default function Footer({ settings }: FooterProps) {
               <span>Тел: <a href={`tel:${phone2.replace(/[^\d+]/g, '')}`} className="hover:text-white transition-colors">{phone2}</a></span>
               <span>e-mail: <a href={`mailto:${contactEmail}`} className="hover:text-white transition-colors">{contactEmail}</a></span>
             </div>
-            <Link href="/requisites" className="text-white/70 text-base underline hover:text-white transition-colors">
+            <Link href="/certificates" className="text-white/70 text-base underline hover:text-white transition-colors">
               Скачать реквизиты
             </Link>
             <p className="text-white/30 text-xs">

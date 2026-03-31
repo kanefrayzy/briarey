@@ -8,25 +8,24 @@ import ChevronDownIcon from './icons/ChevronDownIcon'
 
 export const catalogItems = [
   { label: 'Дымососы', href: '/catalog/dymososy', icon: '/images/catalog/icons/dymosos.png' },
-  { label: 'Клапана сброса', href: '/catalog/klapana', icon: '/images/catalog/icons/klapan.png' },
-  { label: 'Доп. оборудование', href: '/catalog/dop', icon: '/images/catalog/icons/dop.png' },
-  { label: 'Узел стыковочный', href: '/catalog/uzel', icon: '/images/catalog/icons/uzel.png' },
-  { label: 'Шкафы для хранения', href: '/catalog/shkafy', icon: '/images/catalog/icons/shkaf.png' },
-  { label: 'Двери противопожарные', href: '/catalog/dveri', icon: '/images/catalog/icons/dver.png' },
-  { label: 'Установки сбора вещества', href: '/catalog/ustanovki', icon: '/images/catalog/icons/ustanovki.png' },
-  { label: 'Оборудование для пожарных машин', href: '/catalog/pozhar', icon: '/images/catalog/icons/dymosos-mashin.png' },
+  { label: 'Клапана сброса', href: '/catalog/klapana-sbrosa', icon: '/images/catalog/icons/klapan.png' },
+  { label: 'Доп. оборудование', href: '/catalog/dop-oborudovanie', icon: '/images/catalog/icons/dop.png' },
+  { label: 'Узел стыковочный', href: '/catalog/uzel-stykovochnyj', icon: '/images/catalog/icons/uzel.png' },
+  { label: 'Шкафы для хранения', href: '/catalog/shkafy-dlya-hraneniya', icon: '/images/catalog/icons/shkaf.png' },
+  { label: 'Двери противопожарные', href: '/catalog/dveri-protivopozharnye', icon: '/images/catalog/icons/dver.png' },
+  { label: 'Установки сбора вещества', href: '/catalog/ustanovki-sbora-veshchestva', icon: '/images/catalog/icons/ustanovki.png' },
+  { label: 'Оборудование для пожарных машин', href: '/catalog/dymososy-dlya-pozharnyh-mashin', icon: '/images/catalog/icons/dymosos-mashin.png' },
 ]
 
 const navLinks = [
   { label: 'Главная страница', href: '/' },
   { label: 'Калькулятор', href: '/calculator' },
   { label: 'О компании', href: '/about' },
-  { label: 'Сертификаты', href: '/certificates' },
+  { label: 'Информация', href: '/certificates' },
   { label: 'Дилерам', href: '/dealers' },
-  { label: 'Информация', href: '/info' },
   { label: 'Новости', href: '/news' },
   { label: 'Вакансии', href: '/vacancies' },
-  { label: 'Контакты', href: '/contacts' },
+  { label: 'Контакты', href: '#footer-contacts' },
 ]
 
 interface NavMenuProps {

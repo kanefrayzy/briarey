@@ -46,23 +46,28 @@ const CATS_PER_PAGE = 3
 
 interface CatalogGridProps {
   apiCategories?: ApiCategory[]
+  initialCategorySlug?: string
+  initialProducts?: ApiProduct[]
 }
 
-export default function CatalogGrid({ apiCategories }: CatalogGridProps) {
+export default function CatalogGrid({ apiCategories, initialCategorySlug, initialProducts }: CatalogGridProps) {
   const [categories, setCategories] = useState(
     apiCategories?.length
       ? apiCategories.map(c => ({ label: c.name, icon: storageUrl(c.icon), slug: c.slug }))
       : DEFAULT_CATEGORIES.map(c => ({ ...c, slug: '' }))
   )
 
-  const defaultIdx = categories.findIndex(c => c.slug === DEFAULT_SLUG)
-  const [ALL_PRODUCTS, setAllProducts] = useState<MappedProduct[]>([])
-  const [activeCategory, setActiveCategory] = useState(defaultIdx >= 0 ? defaultIdx : 2)
-  const [catPage, setCatPage]               = useState(0)
+  const resolvedInitialSlug = initialCategorySlug || DEFAULT_SLUG
+  const defaultIdx = categories.findIndex(c => c.slug === resolvedInitialSlug)
+  const [ALL_PRODUCTS, setAllProducts] = useState<MappedProduct[]>(
+    initialProducts?.length ? mapApiProducts(initialProducts) : []
+  )
+  const [activeCategory, setActiveCategory] = useState(defaultIdx >= 0 ? defaultIdx : (initialCategorySlug ? 0 : 2))
+  const [catPage, setCatPage]               = useState(defaultIdx >= 0 ? Math.floor(defaultIdx / CATS_PER_PAGE) : 0)
   const [page, setPage]                     = useState(0)
-  const [loading, setLoading]               = useState(true)
+  const [loading, setLoading]               = useState(!initialProducts?.length)
 
-  // Auto-fetch on mount: load categories (if needed) + dymososy products
+  // Auto-fetch on mount: load categories (if needed) + initial products
   useEffect(() => {
     const load = async () => {
       try {
@@ -72,11 +77,18 @@ export default function CatalogGrid({ apiCategories }: CatalogGridProps) {
           cats = fetched.map(c => ({ label: c.name, icon: storageUrl(c.icon), slug: c.slug }))
           setCategories(cats)
         }
-        const idx = cats.findIndex(c => c.slug === DEFAULT_SLUG)
-        if (idx >= 0) setActiveCategory(idx)
+        const slug = initialCategorySlug || DEFAULT_SLUG
+        const idx = cats.findIndex(c => c.slug === slug)
+        if (idx >= 0) {
+          setActiveCategory(idx)
+          setCatPage(Math.floor(idx / CATS_PER_PAGE))
+        }
 
-        const prods = await api.getProducts(DEFAULT_SLUG)
-        setAllProducts(mapApiProducts(prods))
+        // Всегда перезагружаем продукты по slug если initialProducts не пришли
+        if (!initialProducts?.length) {
+          const prods = await api.getProducts(slug)
+          setAllProducts(mapApiProducts(prods))
+        }
       } catch { /* keep existing state */ } finally { setLoading(false) }
     }
     load()

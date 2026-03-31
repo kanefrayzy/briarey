@@ -66,7 +66,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="max-w-[1440px] mx-auto px-4 md:px-8 py-10 md:py-16">
+    <section id="contact-form" className="max-w-[1440px] mx-auto px-4 md:px-8 py-10 md:py-16">
       <div className="bg-[#2e2e2e] rounded-2xl overflow-hidden flex flex-col lg:flex-row">
 
         {/* Мобильное изображение */}

@@ -13,6 +13,14 @@ export const metadata: Metadata = {
   title: 'Бриарей — Противопожарное оборудование',
   description:
     'Производство и продажа противопожарного оборудования: дымососы, узлы стыковочные, клапаны. ООО «Бриарей».',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
+    shortcut: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({

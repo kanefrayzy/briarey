@@ -59,7 +59,7 @@ export default function ProductCard({ name, flow, price, image, compact, href, c
           </span>
 
           <Button variant="calculator" className="!px-3 !py-1.5 !text-xs !rounded-lg w-full !max-w-none !justify-center mt-auto">
-            В корзину
+            Подробнее
           </Button>
         </div>
       </article>
@@ -116,7 +116,7 @@ export default function ProductCard({ name, flow, price, image, compact, href, c
           <span className="text-white font-semibold text-[18px]">
             {price} <span className="ml-2 font-normal text-[#7a563e]">₽</span>
           </span>
-          <Button variant="calculator">В корзину</Button>
+          <Button variant="calculator">Подробнее</Button>
         </div>
       </div>
     </article>

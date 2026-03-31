@@ -5,7 +5,7 @@ const API_BASE =
 
 export function storageUrl(path: string | null | undefined): string {
   if (!path) return '/images/placeholder.png';
-  if (path.startsWith('http') || path.startsWith('/images/')) return path;
+  if (path.startsWith('http') || path.startsWith('/images/') || path.startsWith('/storage/')) return path;
   return `/storage/${path}`;
 }
 
