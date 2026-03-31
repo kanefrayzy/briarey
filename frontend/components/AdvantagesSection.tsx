@@ -1,4 +1,5 @@
 import SectionHeading from './SectionHeading'
+import Image from 'next/image'
 import { ReactNode } from 'react'
 import AdvantagesArrowIcon from './icons/AdvantagesArrowIcon'
 import AdvantagesShieldIcon from './icons/AdvantagesShieldIcon'
@@ -58,10 +59,16 @@ export default function AdvantagesSection({
       style={{ maxWidth: 1440, margin: '0 auto' }}
     >
       {/* Фоновая картинка только на десктопе */}
-      <div
-        className="hidden md:block absolute inset-0 pointer-events-none"
-        style={{ background: `url('/images/hero-catalog.png') ${bgImagePosition} no-repeat`, backgroundSize: 'contain' }}
-      />
+      <div className="hidden md:block absolute inset-0 pointer-events-none overflow-hidden">
+        <Image
+          src="/images/hero-catalog.png"
+          fill
+          className="object-contain"
+          style={{ objectPosition: bgImagePosition }}
+          alt=""
+          aria-hidden
+        />
+      </div>
 
       <div className="relative max-w-[1440px] mx-auto px-4 lg:px-14 py-10 lg:py-24">
 

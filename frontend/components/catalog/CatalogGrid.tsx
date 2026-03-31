@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import CategoryCard from './CategoryCard'
 import ProductCard from './ProductCard'
 import SectionHeading from '@/components/SectionHeading'
@@ -122,13 +123,12 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
   return (
     <section
       id="catalog-page-grid"
-      style={{
-        background: "url('/images/hero-catalog.png') top center no-repeat #242424",
-        backgroundSize: 'contain',
-        maxWidth: 1440,
-        margin: '0 auto',
-      }}
+      className="relative"
+      style={{ background: '#242424', maxWidth: 1440, margin: '0 auto' }}
     >
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <Image src="/images/hero-catalog.png" fill className="object-contain object-top" alt="" aria-hidden />
+      </div>
     <div className="max-w-[1440px] mx-auto px-4 lg:px-14 py-12">
       {/* Заголовок */}
       <SectionHeading
