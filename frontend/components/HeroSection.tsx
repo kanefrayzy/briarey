@@ -36,12 +36,14 @@ export default function HeroSection({ data }: HeroSectionProps) {
       {/* ══ МОБИЛЬНАЯ ВЕРСИЯ (< md) — без параллакса ══ */}
       <section
         className="block md:hidden relative w-full overflow-hidden"
-        style={{ minHeight: '380px', marginTop: '-64px', background: '#0c0c12' }}
+        style={{
+          minHeight: '380px',
+          marginTop: '-64px',
+          backgroundImage: 'url(/images/fon.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       >
-        {/* fon.png — Next.js отдаст WebP автоматически */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Image src="/images/fon.png" fill className="object-cover object-center" alt="" aria-hidden priority />
-        </div>
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/dd.gif"
@@ -70,15 +72,16 @@ export default function HeroSection({ data }: HeroSectionProps) {
       {/* ══ ДЕСКТОПНАЯ ВЕРСИЯ (md+) — параллакс ══ */}
       <section
         className="hidden md:block relative w-full overflow-hidden"
-        style={{ height: '100vh', minHeight: '580px', marginTop: '-96px', paddingTop: '96px', background: '#0c0c12' }}
+        style={{
+          height: '100vh',
+          minHeight: '580px',
+          marginTop: '-96px',
+          paddingTop: '96px',
+          backgroundImage: 'url(/images/fon.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: `center ${s * 0.05}px`,
+        }}
       >
-        {/* fon.png — Next.js отдаст WebP, parallax translateY */}
-        <div
-          className="absolute pointer-events-none"
-          style={{ inset: '-4%', zIndex: 1, willChange: 'transform', transform: `translateY(${s * 0.05}px)` }}
-        >
-          <Image src="/images/fon.png" fill className="object-cover object-center" alt="" aria-hidden priority />
-        </div>
         {/*
           Параллакс-слои (дальний → ближний):
             fon.png       backgroundPosition 0.05x  — почти статично

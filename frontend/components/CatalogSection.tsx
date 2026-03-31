@@ -1,7 +1,6 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
 import Button from './Button'
 import CategoryCard from './catalog/CategoryCard'
 import ProductCard from './catalog/ProductCard'
@@ -194,14 +193,13 @@ export default function CatalogSection({ noBgImage = false, showButton = true, a
   return (
     <section
       id="catalog"
-      className="relative"
-      style={{ background: '#242424', maxWidth: 1440, margin: '0 auto' }}
+      style={{
+        background: noBgImage ? '#242424' : "url('/images/hero-catalog.png') top center no-repeat #242424",
+        backgroundSize: 'contain',
+        maxWidth: 1440,
+        margin: '0 auto',
+      }}
     >
-      {!noBgImage && (
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <Image src="/images/hero-catalog.png" fill className="object-contain object-top" alt="" aria-hidden />
-        </div>
-      )}
       <div className="max-w-[1440px] mx-auto px-4 lg:px-14 py-12">
 
         {/* ── Заголовок ── */}

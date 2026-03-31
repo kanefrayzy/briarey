@@ -75,7 +75,7 @@ export default function ProductCard({ name, flow, price, image, compact, href, c
     >
       {/* Изображение */}
       <div className="w-full flex-shrink-0 relative bg-[#333]" style={{ aspectRatio: '4/3' }}>
-        <Image src={image} alt={name} fill className="object-contain p-6" sizes="(max-width: 640px) calc(50vw - 24px), 280px" placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
+        <Image src={image} alt={name} fill className="object-contain p-6" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
       </div>
 
       {/* Информация */}
