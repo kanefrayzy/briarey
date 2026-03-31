@@ -405,6 +405,10 @@ export const api = {
       method: 'POST',
       body: JSON.stringify(data),
     }),
+
+  // Calculator
+  getCalculatorRecommend: (params: { volume: number; speed: 'fast' | 'standard'; zones: number }) =>
+    fetchApi<CalculatorResult>(`/calculator/recommend?volume=${params.volume}&speed=${params.speed}&zones=${params.zones}`),
 };
 
 // Order types
@@ -428,4 +432,23 @@ export interface OrderPayload {
   apartment?: string
   comment?: string
   items: OrderItemPayload[]
+}
+
+// Calculator types
+export interface CalculatorProductResult {
+  id: number
+  slug: string
+  name: string
+  price: number
+  image: string | null
+  productivity: number
+  specs: { key: string | null; label: string; value: string; unit: string | null }[]
+}
+
+export interface CalculatorResult {
+  required_productivity: number
+  volume: number
+  speed: 'fast' | 'standard'
+  zones: number
+  products: CalculatorProductResult[]
 }

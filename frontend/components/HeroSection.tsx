@@ -51,6 +51,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
             loop
             muted
             playsInline
+            poster="/images/dd-poster.jpg"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '-240px top' }}
@@ -108,6 +109,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
             loop
             muted
             playsInline
+            poster="/images/dd-poster.jpg"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover object-center"
           >

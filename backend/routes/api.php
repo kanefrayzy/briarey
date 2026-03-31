@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\AboutController;
 use App\Http\Controllers\Api\DealerController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\CalculatorController;
 use Illuminate\Support\Facades\Route;
 
 // Главная страница (все секции одним запросом)
@@ -45,3 +46,6 @@ Route::post('/newsletter', [ContactController::class, 'subscribe']);
 
 // Заказы
 Route::post('/orders', [OrderController::class, 'store']);
+
+// Калькулятор
+Route::get('/calculator/recommend', [CalculatorController::class, 'recommend']);
