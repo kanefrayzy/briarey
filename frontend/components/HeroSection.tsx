@@ -45,13 +45,15 @@ export default function HeroSection({ data }: HeroSectionProps) {
         }}
       >
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/dd.gif"
-            alt="Дымосос Бриарей"
-            fill
-            className="object-cover"
+          <video
+            src="/images/dd.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '-240px top' }}
-            priority
           />
         </div>
 
@@ -101,13 +103,17 @@ export default function HeroSection({ data }: HeroSectionProps) {
             transform: `translateY(${s * 0.08}px)`,
           }}
         >
-          <Image
-            src="/images/dd.gif"
-            alt="Дымосос Бриарей"
-            fill
-            className="object-cover object-center"
-            priority
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          >
+            <source src="/images/dd.webm" type="video/webm" />
+            <source src="/images/dd.mp4" type="video/mp4" />
+          </video>
         </div>
 
         {/* ── Перекрывашка ── */}
