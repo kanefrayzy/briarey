@@ -385,7 +385,7 @@ export default function ProductDetail({ product }: Props) {
       name: product.name,
       image: product.image,
       price: product.price,
-      specs: product.specs.slice(0, 3).map(s => ({ key: s.key, label: s.label, value: s.value })),
+      specs: product.specs.slice(0, 3).map(s => ({ key: s.key ?? '', label: s.label, value: s.value })),
       extras: product.extras
         .filter(e => !!selectedExtras[e.id])
         .map(e => ({
