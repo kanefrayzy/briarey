@@ -4,7 +4,7 @@ import ProductDetail from '@/components/catalog/ProductDetail'
 import CatalogGrid from '@/components/catalog/CatalogGrid'
 import SmartPickSection from '@/components/SmartPickSection'
 import ContactForm from '@/components/ContactForm'
-import { api, storageUrl } from '@/lib/api'
+import { api, storageUrl, productImageUrl } from '@/lib/api'
 
 interface Props {
   params: { slug: string }
@@ -34,8 +34,8 @@ export default async function CatalogSlugPage({ params }: Props) {
       name: apiProduct.name,
       airflow: '',
       price: apiProduct.price,
-      image: storageUrl(apiProduct.image),
-      thumbnails: apiProduct.images?.map(img => storageUrl(img.image)) ?? [storageUrl(apiProduct.image)],
+      image: productImageUrl(apiProduct.slug, apiProduct.image),
+      thumbnails: [productImageUrl(apiProduct.slug, apiProduct.image)],
       composition: apiProduct.composition_items?.map(c => c.text) ?? [],
       calculatorHint: apiProduct.calculator_hint ?? '',
       technicalDocUrl: apiProduct.technical_doc_url ?? undefined,

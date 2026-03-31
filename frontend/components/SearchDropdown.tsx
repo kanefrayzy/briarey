@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { api, storageUrl, type Product } from '@/lib/api'
+import { api, storageUrl, productImageUrl, type Product } from '@/lib/api'
 
 interface SearchDropdownProps {
   query: string
@@ -46,7 +46,7 @@ function SearchDropdown({ query, results, loading, onClose }: SearchDropdownProp
                 style={{ width: 48, height: 48, background: 'rgba(255,255,255,0.06)' }}
               >
                 <Image
-                  src={storageUrl(product.image)}
+                  src={productImageUrl(product.slug, product.image)}
                   alt={product.name}
                   fill
                   className="object-contain p-1"

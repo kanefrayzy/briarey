@@ -8,7 +8,7 @@ import CategoryArrowLeftIcon from '@/components/icons/CategoryArrowLeftIcon'
 import CategoryArrowRightIcon from '@/components/icons/CategoryArrowRightIcon'
 import PaginationPrevIcon from '@/components/icons/PaginationPrevIcon'
 import PaginationNextIcon from '@/components/icons/PaginationNextIcon'
-import { Category as ApiCategory, Product as ApiProduct, api, storageUrl } from '@/lib/api'
+import { Category as ApiCategory, Product as ApiProduct, api, storageUrl, productImageUrl } from '@/lib/api'
 
 const DEFAULT_CATEGORIES = [
   { label: 'Узел стыковочный',            icon: '/images/catalog/icons/uzel.png' },
@@ -33,7 +33,7 @@ function mapApiProducts(items: ApiProduct[]): MappedProduct[] {
       name: p.name,
       flow: productivityAttr ? productivityAttr.value : '',
       price: p.price ? `от ${p.price.toLocaleString('ru-RU')}` : '',
-      image: storageUrl(p.image),
+      image: productImageUrl(p.slug, p.image),
       slug: p.slug,
       categorySlug: p.category?.slug ?? '',
       techDocUrl: p.technical_doc_url ?? null,

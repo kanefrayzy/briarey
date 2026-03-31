@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Button from '@/components/Button'
 import { useCart, type CartItem } from '@/lib/cart'
+import { productImageUrl } from '@/lib/api'
 import TrashIcon from '@/components/icons/TrashIcon'
 import SpeedIcon from '@/components/icons/SpeedIcon'
 import SpecSizeIcon from '@/components/icons/SpecSizeIcon'
@@ -55,7 +56,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
       <div className="flex gap-4 md:hidden mb-4">
         <Link href={`/catalog/${item.slug}`} className="shrink-0 hover:opacity-80 transition-opacity">
           <div className="relative rounded-xl overflow-hidden" style={{ width: 110, height: 110, background: '#3a3a3a' }}>
-            <Image src={item.image ?? '/images/placeholder.png'} alt={item.name} fill className="object-contain p-1" sizes="110px" />
+            <Image src={productImageUrl(item.slug, item.image)} alt={item.name} fill className="object-contain p-1" sizes="110px" />
           </div>
         </Link>
         <div className="flex flex-col justify-between gap-2 flex-1">
@@ -147,7 +148,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
         <div className="shrink-0 flex gap-6">
           <Link href={`/catalog/${item.slug}`} className="hover:opacity-80 transition-opacity shrink-0">
             <div className="relative rounded-xl overflow-hidden" style={{ width: 220, height: 200, background: '#3a3a3a' }}>
-              <Image src={item.image ?? '/images/placeholder.png'} alt={item.name} fill className="object-contain p-2" sizes="220px" />
+              <Image src={productImageUrl(item.slug, item.image)} alt={item.name} fill className="object-contain p-2" sizes="220px" />
             </div>
           </Link>
           {/* Specs с иконками справа от картинки */}

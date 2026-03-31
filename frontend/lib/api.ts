@@ -9,6 +9,11 @@ export function storageUrl(path: string | null | undefined): string {
   return `/storage/${path}`;
 }
 
+export function productImageUrl(slug: string | null | undefined, fallbackImage: string | null | undefined): string {
+  if (slug) return `/images/catalog/products/${slug}.png`;
+  return storageUrl(fallbackImage);
+}
+
 async function fetchApi<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${endpoint}`, {
     ...options,
