@@ -46,12 +46,12 @@ export default function HeroSection({ data }: HeroSectionProps) {
       >
         <div className="absolute inset-0 z-0">
           <video
-            src="/images/dd.mp4"
+            src="/images/dymka.webm"
             autoPlay
             loop
             muted
             playsInline
-            poster="/images/dd-poster.jpg"
+            poster="/images/dymka.png"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '-240px top' }}
@@ -109,12 +109,11 @@ export default function HeroSection({ data }: HeroSectionProps) {
             loop
             muted
             playsInline
-            poster="/images/dd-poster.jpg"
+            poster="/images/dymka.png"
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
-            <source src="/images/dd.webm" type="video/webm" />
-            <source src="/images/dd.mp4" type="video/mp4" />
+            <source src="/images/dymka.webm" type="video/webm" />
           </video>
         </div>
 
