@@ -46,7 +46,6 @@ export default function HeroSection({ data }: HeroSectionProps) {
       >
         <div className="absolute inset-0 z-0">
           <video
-            src="/images/dymka.webm"
             autoPlay
             loop
             muted
@@ -55,7 +54,12 @@ export default function HeroSection({ data }: HeroSectionProps) {
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '-240px top' }}
-          />
+          >
+            {/* Safari (iOS/macOS) — HEVC с альфа-каналом */}
+            <source src="/images/dymka.mov" type='video/mp4; codecs="hvc1"' />
+            {/* Chrome, Firefox и остальные */}
+            <source src="/images/dymka.webm" type="video/webm" />
+          </video>
         </div>
 
         <SmokeOverlay position="bottom" zIndex={2} height="30%" />
@@ -113,6 +117,9 @@ export default function HeroSection({ data }: HeroSectionProps) {
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
+            {/* Safari (iOS/macOS) — HEVC с альфа-каналом */}
+            <source src="/images/dymka.mov" type='video/mp4; codecs="hvc1"' />
+            {/* Chrome, Firefox и остальные */}
             <source src="/images/dymka.webm" type="video/webm" />
           </video>
         </div>
