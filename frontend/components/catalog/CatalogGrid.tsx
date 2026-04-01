@@ -1,13 +1,11 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import CategoryCard from './CategoryCard'
 import ProductCard from './ProductCard'
 import SectionHeading from '@/components/SectionHeading'
 import CategoryArrowLeftIcon from '@/components/icons/CategoryArrowLeftIcon'
 import CategoryArrowRightIcon from '@/components/icons/CategoryArrowRightIcon'
-import PaginationPrevIcon from '@/components/icons/PaginationPrevIcon'
-import PaginationNextIcon from '@/components/icons/PaginationNextIcon'
 import { Category as ApiCategory, Product as ApiProduct, api, storageUrl, productImageUrl } from '@/lib/api'
 
 const DEFAULT_CATEGORIES = [
@@ -64,8 +62,10 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
   )
   const [activeCategory, setActiveCategory] = useState(defaultIdx >= 0 ? defaultIdx : (initialCategorySlug ? 0 : 2))
   const [catPage, setCatPage]               = useState(defaultIdx >= 0 ? Math.floor(defaultIdx / CATS_PER_PAGE) : 0)
-  const [page, setPage]                     = useState(0)
+  const [visibleCount, setVisibleCount]     = useState(PER_PAGE)
+  const [animateFrom, setAnimateFrom]       = useState(0)
   const [loading, setLoading]               = useState(!initialProducts?.length)
+  const sentinelRef                         = useRef<HTMLDivElement>(null)
 
   // Auto-fetch on mount: load categories (if needed) + initial products
   useEffect(() => {
@@ -94,10 +94,34 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
     load()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Сброс анимации при смене состояния загрузки
+  useEffect(() => {
+    if (!loading) setAnimateFrom(0)
+  }, [loading])
+
+  // IntersectionObserver — подгрузка следующей порции при скролле
+  useEffect(() => {
+    const sentinel = sentinelRef.current
+    const hasMore = visibleCount < ALL_PRODUCTS.length
+    if (!sentinel || !hasMore || loading) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAnimateFrom(visibleCount)
+          setVisibleCount(prev => Math.min(prev + PER_PAGE, ALL_PRODUCTS.length))
+        }
+      },
+      { rootMargin: '300px' }
+    )
+    observer.observe(sentinel)
+    return () => observer.disconnect()
+  }, [visibleCount, ALL_PRODUCTS.length, loading])
+
   // Fetch products when category is clicked
   const handleCategoryChange = useCallback(async (idx: number) => {
     setActiveCategory(idx)
-    setPage(0)
+    setVisibleCount(PER_PAGE)
+    setAnimateFrom(0)
     const cat = categories[idx]
     if (cat?.slug) {
       setLoading(true)
@@ -108,16 +132,10 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
     }
   }, [categories])
 
-  const totalPages    = Math.ceil(ALL_PRODUCTS.length / PER_PAGE)
-  const visible       = ALL_PRODUCTS.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE)
+  const visible       = ALL_PRODUCTS.slice(0, visibleCount)
+  const hasMore       = visibleCount < ALL_PRODUCTS.length
   const totalCatPages = Math.ceil(categories.length / CATS_PER_PAGE)
   const visibleCats   = categories.slice(catPage * CATS_PER_PAGE, (catPage + 1) * CATS_PER_PAGE)
-
-  const handlePageChange = (p: number) => {
-    setPage(p)
-    // Скролл к верху секции
-    document.getElementById('catalog-page-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
 
   return (
     <section
@@ -214,75 +232,43 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
         </div>
       ) : (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-        {visible.map(product => (
-          <ProductCard
+        {visible.map((product, i) => (
+          <div
             key={product.id}
-            name={product.name}
-            flow={product.flow}
-            price={product.price}
-            image={product.image}
-            href={`/catalog/${product.slug}`}
-            categorySlug={product.categorySlug}
-            techDocUrl={product.techDocUrl ?? undefined}
-          />
+            style={i >= animateFrom ? {
+              animation: `catalogFadeUp 0.5s ease ${Math.min((i - animateFrom) * 0.07, 0.35)}s both`,
+            } : {}}
+          >
+            <ProductCard
+              name={product.name}
+              flow={product.flow}
+              price={product.price}
+              image={product.image}
+              href={`/catalog/${product.slug}`}
+              categorySlug={product.categorySlug}
+              techDocUrl={product.techDocUrl ?? undefined}
+            />
+          </div>
         ))}
       </div>
       )}
 
-      {/* Пагинация — слева */}
-      <div className="flex items-center gap-1">
-        {/* Кнопка «предыдущая» */}
-        <button
-          onClick={() => handlePageChange(page - 1)}
-          disabled={page === 0}
-          className="flex items-center justify-center transition-opacity disabled:opacity-30"
-          style={{
-            width: 40,
-            height: 40,
-            background: '#2e2e2e',
-            borderRadius: 4,
-            color: 'white',
-          }}
-          aria-label="Предыдущая страница"
-        >
-          <PaginationPrevIcon />
-        </button>
-
-        {/* Номера страниц */}
-        {Array.from({ length: totalPages }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => handlePageChange(i)}
-            className="flex items-center justify-center text-sm font-medium transition-colors"
-            style={{
-              width:      40,
-              height:     40,
-              borderRadius: 4,
-              background:   i === page ? '#1a1a1a' : '#2e2e2e',
-              color:        'white',
-              fontWeight:   i === page ? 700 : 400,
-            }}
-          >
-            {i + 1}
-          </button>
-        ))}
-
-        {/* Кнопка «следующая» */}
-        <button
-          onClick={() => handlePageChange(page + 1)}
-          disabled={page === totalPages - 1}
-          className="flex items-center justify-center transition-opacity disabled:opacity-30"
-          style={{
-            width: 40,
-            height: 40,
-            background: '#2e2e2e',
-            borderRadius: 4,
-            color: 'white',
-          }}
-          aria-label="Следующая страница"
-        >
-          <PaginationNextIcon />
-        </button>
+      {/* Sentinel для infinite scroll */}
+      <div ref={sentinelRef} className="w-full">
+        {hasMore && (
+          <div className="flex justify-center py-8">
+            <div
+              className="rounded-full"
+              style={{
+                width: 40,
+                height: 40,
+                border: '3px solid #3a3a3a',
+                borderTopColor: '#2B5CE6',
+                animation: 'spin 0.8s linear infinite',
+              }}
+            />
+          </div>
+        )}
       </div>
     </div>
     </section>
