@@ -19,8 +19,8 @@ const navColumns = [
   },
   {
     heading: 'Информация',
-    links: ['Видео инструкции', 'Вопросы', 'СНиПы', 'Законы'],
-    hrefs: ['/#slider-section', '/certificates#faq', '/certificates', '/certificates'],
+    links: ['Вопросы', 'СНиПы', 'Законы'],
+    hrefs: ['/certificates#faq', '/certificates', '/certificates'],
   },
   {
     heading: 'Оборудование',
@@ -235,7 +235,7 @@ export default function Footer({ settings: settingsProp }: FooterProps) {
         <div className="max-w-[1440px] mx-auto px-4 md:px-8 py-5 flex justify-center">
           <span className="text-white/30 text-xs">
             Сделано в{' '}
-            <a href="#" className="text-[#AC7F5E] hover:text-[#c49a72] transition-colors">
+            <a href="https://nikstudio.pro" className="text-[#AC7F5E] hover:text-[#c49a72] transition-colors">
               дизайн-бюро Славы Никитина
             </a>
           </span>

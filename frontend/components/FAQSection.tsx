@@ -94,7 +94,7 @@ export default function FAQSection({ faqs: apiFaqs }: FAQSectionProps) {
             <p className="text-brand-gray text-sm leading-relaxed">
               Тут вы найдёте ответы на часто задаваемые вопросы
             </p>
-            <Button href="/faq" variant="catalog">Больше информации</Button>
+            <Button href="/certificates" variant="catalog">Больше информации</Button>
           </div>
 
           {/* Right: accordion */}
