@@ -55,8 +55,8 @@ export default function HeroSection({ data }: HeroSectionProps) {
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '-240px top' }}
           >
-            {/* Safari (iOS/macOS) — HEVC с альфа-каналом */}
-            <source src="/images/dymka.mov" type='video/mp4; codecs="hvc1"' />
+            {/* Safari (iOS/macOS) — ProRes 4444 с альфа-каналом */}
+            <source src="/images/dymka.mov" type="video/quicktime" />
             {/* Chrome, Firefox и остальные */}
             <source src="/images/dymka.webm" type="video/webm" />
           </video>
@@ -117,8 +117,8 @@ export default function HeroSection({ data }: HeroSectionProps) {
             aria-hidden="true"
             className="absolute inset-0 w-full h-full object-cover object-center"
           >
-            {/* Safari (iOS/macOS) — HEVC с альфа-каналом */}
-            <source src="/images/dymka.mov" type='video/mp4; codecs="hvc1"' />
+            {/* Safari (iOS/macOS) — ProRes 4444 с альфа-каналом */}
+            <source src="/images/dymka.mov" type="video/quicktime" />
             {/* Chrome, Firefox и остальные */}
             <source src="/images/dymka.webm" type="video/webm" />
           </video>

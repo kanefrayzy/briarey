@@ -1,52 +1,68 @@
 """
-Конвертирует dymka.webm → dymka.mov (HEVC с альфа-каналом для Safari/iOS).
+Конвертирует final.gif (с прозрачностью) в:
+  dymka.webm  — VP9 с альфа-каналом   (Chrome, Firefox, Safari 14.1+)
+  dymka.mov   — ProRes 4444 с альфа   (все версии Safari / iOS)
 
 Использование:
     python convert_dymka.py
 
-Входной файл:  frontend/public/images/dymka.webm
-Выходной файл: frontend/public/images/dymka.mov
+Входной файл:  frontend/public/images/final.gif
 """
 
 import subprocess
 import sys
 from pathlib import Path
 
-INPUT  = Path("frontend/public/images/dymka.webm")
-OUTPUT = Path("frontend/public/images/dymka.mov")
+IMAGES = Path("frontend/public/images")
+INPUT  = IMAGES / "final.gif"
+
+
+def run(cmd: list[str]) -> None:
+    print(f"\nЗапуск: {' '.join(cmd)}\n")
+    result = subprocess.run(cmd, text=True, stderr=subprocess.PIPE)
+    if result.returncode != 0:
+        print("[ERROR] FFmpeg завершился с ошибкой:\n")
+        print(result.stderr)
+        sys.exit(1)
+
 
 def main():
     if not INPUT.exists():
         print(f"[ERROR] Файл не найден: {INPUT}")
         sys.exit(1)
 
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    IMAGES.mkdir(parents=True, exist_ok=True)
 
-    cmd = [
-        "ffmpeg",
-        "-y",                      # перезаписать без вопросов
+    # ── 1. WebM VP9 с альфа-каналом (Chrome, Firefox, Safari 14.1+) ──
+    webm = IMAGES / "dymka.webm"
+    run([
+        "ffmpeg", "-y",
         "-i", str(INPUT),
-        "-c:v", "libx265",         # HEVC
-        "-tag:v", "hvc1",          # тег, который понимает Safari
-        "-pix_fmt", "yuv420p",     # источник без альфа-канала
-        "-crf", "20",              # качество (0=лучше, 51=хуже; 18-24 оптимально)
-        "-preset", "slow",         # медленнее = меньше файл
-        "-movflags", "+faststart", # метаданные в начало (быстрый старт)
-        "-an",                     # без аудио (у видео его нет)
-        str(OUTPUT),
-    ]
+        "-c:v", "libvpx-vp9",
+        "-pix_fmt", "yuva420p",    # альфа-канал
+        "-b:v", "0",               # режим CRF (auto bitrate)
+        "-crf", "20",              # качество (0=лучше, 63=хуже)
+        "-cpu-used", "2",          # скорость/качество (0-5)
+        "-auto-alt-ref", "0",      # обязательно 0 при yuva420p
+        "-an",
+        str(webm),
+    ])
+    print(f"[OK] {webm}  ({webm.stat().st_size / 1_048_576:.1f} МБ)")
 
-    print(f"Запуск: {' '.join(cmd)}\n")
+    # ── 2. MOV ProRes 4444 с альфа-каналом (все Safari / iOS) ──
+    mov = IMAGES / "dymka.mov"
+    run([
+        "ffmpeg", "-y",
+        "-i", str(INPUT),
+        "-c:v", "prores_ks",
+        "-profile:v", "4",         # ProRes 4444 (поддерживает альфа)
+        "-pix_fmt", "yuva444p10le",# 10-бит с альфа-каналом
+        "-movflags", "+faststart",
+        "-an",
+        str(mov),
+    ])
+    print(f"[OK] {mov}  ({mov.stat().st_size / 1_048_576:.1f} МБ)")
 
-    result = subprocess.run(cmd, text=True, stderr=subprocess.PIPE)
-
-    if result.returncode != 0:
-        print("[ERROR] FFmpeg завершился с ошибкой:\n")
-        print(result.stderr)
-        sys.exit(1)
-
-    size_mb = OUTPUT.stat().st_size / 1_048_576
-    print(f"\n[OK] Готово: {OUTPUT}  ({size_mb:.1f} МБ)")
 
 if __name__ == "__main__":
     main()
