@@ -293,9 +293,10 @@ export default function CalculatorQuiz() {
       ? `${form.volume} м³ × ${rooms} помещений = ${Number(form.volume) * rooms} м³ общий`
       : `${form.volume} м³`
 
-    const productLines = currentResult?.products
-      .map(p => `  — ${p.name} (${p.productivity.toLocaleString('ru-RU')} м³/ч)`)
-      .join('\n') ?? ''
+    const topProduct = currentResult?.products?.[0]
+    const productLine = topProduct
+      ? `  — ${topProduct.name} (${topProduct.productivity.toLocaleString('ru-RU')} м³/ч)`
+      : ''
 
     const lines: string[] = [
       'Расчёт дымоудаления:',
@@ -305,13 +306,16 @@ export default function CalculatorQuiz() {
       `• Узлы стыковочные: ${nodeLabel}${form.ei ? ` (${form.ei})` : ''}`,
       form.discharge ? `• Напорная линия: ${form.discharge} м` : '',
       currentResult ? `• Требуемая производительность: ${currentResult.required_productivity.toLocaleString('ru-RU')} м³/ч` : '',
-      productLines ? `\nРекомендованное оборудование:\n${productLines}` : '',
+      productLine ? `\nРекомендованное оборудование:\n${productLine}` : '',
     ].filter(Boolean)
 
     sessionStorage.setItem('contactFormPrefill', JSON.stringify({
       topic: 'Коммерческое предложение',
       message: lines.join('\n'),
     }))
+
+    // Notify already-mounted ContactForm
+    window.dispatchEvent(new Event('contactFormPrefill'))
 
     const el = document.getElementById('contact-form')
     if (el) el.scrollIntoView({ behavior: 'smooth' })

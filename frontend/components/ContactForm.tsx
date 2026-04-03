@@ -42,17 +42,31 @@ export default function ContactForm() {
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
 
-  // Read calculator prefill from sessionStorage if present
-  useEffect(() => {
+  // Read calculator prefill from sessionStorage on mount OR via custom event (same-page navigation)
+  const applyPrefill = () => {
     try {
       const raw = sessionStorage.getItem('contactFormPrefill')
       if (raw) {
         const { topic: t, message: m } = JSON.parse(raw) as { topic?: string; message?: string }
         sessionStorage.removeItem('contactFormPrefill')
-        if (t) { pendingTopicRef.current = t; setTopic(t) }
+        if (t) {
+          pendingTopicRef.current = t
+          setTopic(prev => {
+            if (topics.includes(t)) return t
+            return prev
+          })
+        }
         if (m) setMessage(m)
+        setSent(false)
       }
     } catch {}
+  }
+
+  useEffect(() => {
+    applyPrefill()
+    const handler = () => applyPrefill()
+    window.addEventListener('contactFormPrefill', handler)
+    return () => window.removeEventListener('contactFormPrefill', handler)
   }, [])
 
   useEffect(() => {
