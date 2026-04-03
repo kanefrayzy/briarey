@@ -1,6 +1,6 @@
 'use client'
 
-import { InputHTMLAttributes, TextareaHTMLAttributes, useState } from 'react'
+import { InputHTMLAttributes, TextareaHTMLAttributes, useEffect, useState } from 'react'
 
 interface BaseProps {
   label: string
@@ -21,6 +21,12 @@ export default function FormInput(props: FormInputProps) {
   const { label } = props
   const [focused, setFocused] = useState(false)
   const [value, setValue] = useState('')
+
+  // Sync internal label-float state when external value changes (e.g. programmatic prefill)
+  const externalValue = (props as { value?: unknown }).value
+  useEffect(() => {
+    if (externalValue !== undefined) setValue(String(externalValue ?? ''))
+  }, [externalValue])
 
   const floated = focused || value.length > 0
 

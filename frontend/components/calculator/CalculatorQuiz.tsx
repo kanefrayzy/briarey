@@ -285,6 +285,38 @@ export default function CalculatorQuiz() {
     setStep(0)
   }
 
+  const openContact = (currentResult: typeof result) => {
+    const speedLabel = form.speed === 'fast' ? 'ускоренная (10 мин)' : 'стандартная (1 час)'
+    const zonesLabel = form.zones === 'two' ? 'двухзонное' : 'однозонное'
+    const nodeLabel  = form.nodeType === 'supply_exhaust' ? 'приточно-вытяжные' : 'вытяжные'
+    const volumeLine = rooms > 1
+      ? `${form.volume} м³ × ${rooms} помещений = ${Number(form.volume) * rooms} м³ общий`
+      : `${form.volume} м³`
+
+    const productLines = currentResult?.products
+      .map(p => `  — ${p.name} (${p.productivity.toLocaleString('ru-RU')} м³/ч)`)
+      .join('\n') ?? ''
+
+    const lines: string[] = [
+      'Расчёт дымоудаления:',
+      `• Объём помещения: ${volumeLine}`,
+      `• Скорость удаления: ${speedLabel}`,
+      `• Зонирование: ${zonesLabel}`,
+      `• Узлы стыковочные: ${nodeLabel}${form.ei ? ` (${form.ei})` : ''}`,
+      form.discharge ? `• Напорная линия: ${form.discharge} м` : '',
+      currentResult ? `• Требуемая производительность: ${currentResult.required_productivity.toLocaleString('ru-RU')} м³/ч` : '',
+      productLines ? `\nРекомендованное оборудование:\n${productLines}` : '',
+    ].filter(Boolean)
+
+    sessionStorage.setItem('contactFormPrefill', JSON.stringify({
+      topic: 'Коммерческое предложение',
+      message: lines.join('\n'),
+    }))
+
+    const el = document.getElementById('contact-form')
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
   /* ── Шаги ── */
   const STEPS = [
     // 0. Объём
@@ -472,7 +504,7 @@ export default function CalculatorQuiz() {
             style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.10)' }}
           >
             <p className="text-white/60">Подходящих дымососов не найдено. Обратитесь к нашим менеджерам.</p>
-            <Button href="/#contact-form" variant="calculator" className="mt-4">
+            <Button variant="calculator" className="mt-4" onClick={() => openContact(null)}>
               Связаться с нами
             </Button>
           </div>
@@ -496,7 +528,7 @@ export default function CalculatorQuiz() {
         )}
 
         <div className="mt-6 flex gap-3 flex-wrap">
-          <Button href="/#contact-form" variant="calculator">
+          <Button variant="calculator" onClick={() => openContact(result)}>
             Получить коммерческое предложение
           </Button>
           <Button href="/catalog/dymososy" variant="outline">

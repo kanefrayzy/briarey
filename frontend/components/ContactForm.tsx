@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Button from './Button'
@@ -8,6 +8,19 @@ import FormInput from './form/FormInput'
 import FormSelect from './form/FormSelect'
 import FormCheckbox from './form/FormCheckbox'
 import { api } from '@/lib/api'
+
+function applyPhoneMask(raw: string): string {
+  let d = raw.replace(/\D/g, '')
+  if (!d) return ''
+  if (d[0] === '8') d = '7' + d.slice(1)
+  else if (d[0] !== '7') d = '7' + d
+  d = d.slice(0, 11)
+  if (d.length <= 1) return '+' + d
+  if (d.length <= 4) return `+${d[0]} (${d.slice(1)}`
+  if (d.length <= 7) return `+${d[0]} (${d.slice(1, 4)}) ${d.slice(4)}`
+  if (d.length <= 9) return `+${d[0]} (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7)}`
+  return `+${d[0]} (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7, 9)}-${d.slice(9)}`
+}
 
 const DEFAULT_TOPICS = [
   'Стать диллером',
@@ -19,6 +32,7 @@ const DEFAULT_TOPICS = [
 export default function ContactForm() {
   const [topics, setTopics] = useState<string[]>(DEFAULT_TOPICS)
   const [topic, setTopic] = useState(DEFAULT_TOPICS[0])
+  const pendingTopicRef = useRef<string | null>(null)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -28,13 +42,31 @@ export default function ContactForm() {
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
 
+  // Read calculator prefill from sessionStorage if present
+  useEffect(() => {
+    try {
+      const raw = sessionStorage.getItem('contactFormPrefill')
+      if (raw) {
+        const { topic: t, message: m } = JSON.parse(raw) as { topic?: string; message?: string }
+        sessionStorage.removeItem('contactFormPrefill')
+        if (t) { pendingTopicRef.current = t; setTopic(t) }
+        if (m) setMessage(m)
+      }
+    } catch {}
+  }, [])
+
   useEffect(() => {
     api.getContactTopics()
       .then(data => {
         if (data?.length) {
           const labels = data.map(t => t.label)
           setTopics(labels)
-          setTopic(labels[0])
+          // Preserve prefill topic if it's in the list, otherwise use first
+          setTopic(prev => {
+            const keep = pendingTopicRef.current ?? prev
+            pendingTopicRef.current = null
+            return labels.includes(keep) ? keep : labels[0]
+          })
         }
       })
       .catch(() => {})
@@ -92,7 +124,7 @@ export default function ContactForm() {
 
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
             <FormInput label="Имя" type="text" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setName(e.target.value)} />
-            <FormInput label="Телефон" type="tel" value={phone} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPhone(e.target.value)} />
+            <FormInput label="Телефон" type="tel" value={phone} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPhone(applyPhoneMask(e.target.value))} />
             <FormInput label="Email" type="email" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)} />
             <FormInput label="Текст сообщения" multiline rows={3} value={message} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setMessage(e.target.value)} />
 
