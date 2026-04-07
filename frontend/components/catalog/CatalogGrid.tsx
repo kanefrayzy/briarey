@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import CategoryCard from './CategoryCard'
 import ProductCard from './ProductCard'
 import SectionHeading from '@/components/SectionHeading'
+import CategoryArrowLeftIcon from '@/components/icons/CategoryArrowLeftIcon'
+import CategoryArrowRightIcon from '@/components/icons/CategoryArrowRightIcon'
 import { Category as ApiCategory, Product as ApiProduct, api, storageUrl, productImageUrl } from '@/lib/api'
 
 const DEFAULT_CATEGORIES = [
@@ -64,6 +66,7 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
   const [animateFrom, setAnimateFrom]       = useState(0)
   const [loading, setLoading]               = useState(!initialProducts?.length)
   const sentinelRef                         = useRef<HTMLDivElement>(null)
+  const catScrollRef                        = useRef<HTMLDivElement>(null)
 
   // Auto-fetch on mount: load categories (if needed) + initial products
   useEffect(() => {
@@ -172,21 +175,47 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
         ))}
       </div>
 
-      {/* Категории — mobile (swipeable) */}
+      {/* Категории — mobile (стрелки + свайп) */}
       <div
-        className="flex md:hidden items-stretch mb-6 -mx-4 overflow-x-auto scrollbar-hide"
-        style={{ background: '#2e2e2e', WebkitOverflowScrolling: 'touch' }}
+        className="flex md:hidden items-stretch mb-6 -mx-4"
+        style={{ background: '#2e2e2e' }}
       >
-        {categories.map((cat, i) => (
-          <div key={cat.label} className="flex-shrink-0" style={{ minWidth: 'calc(100% / 3.5)' }}>
-            <CategoryCard
-              label={cat.label}
-              icon={cat.icon}
-              active={i === activeCategory}
-              onClick={() => handleCategoryChange(i)}
-            />
-          </div>
-        ))}
+        <button
+          onClick={() => {
+            const el = catScrollRef.current
+            if (el) el.scrollBy({ left: -el.clientWidth * 0.6, behavior: 'smooth' })
+          }}
+          className="flex-shrink-0 w-10 flex items-center justify-center transition-opacity"
+        >
+          <CategoryArrowLeftIcon />
+        </button>
+
+        <div
+          ref={catScrollRef}
+          className="flex flex-1 items-start overflow-x-auto scrollbar-hide"
+          style={{ WebkitOverflowScrolling: 'touch' as any }}
+        >
+          {categories.map((cat, i) => (
+            <div key={cat.label} className="flex-shrink-0" style={{ minWidth: 'calc(100% / 3)' }}>
+              <CategoryCard
+                label={cat.label}
+                icon={cat.icon}
+                active={i === activeCategory}
+                onClick={() => handleCategoryChange(i)}
+              />
+            </div>
+          ))}
+        </div>
+
+        <button
+          onClick={() => {
+            const el = catScrollRef.current
+            if (el) el.scrollBy({ left: el.clientWidth * 0.6, behavior: 'smooth' })
+          }}
+          className="flex-shrink-0 w-10 flex items-center justify-center transition-opacity"
+        >
+          <CategoryArrowRightIcon />
+        </button>
       </div>
 
       {/* Сетка продуктов — 3 колонки */}
@@ -195,10 +224,10 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
           {[1, 2, 3, 4, 5, 6].map(i => (
             <div key={i} className="rounded-2xl overflow-hidden animate-pulse" style={{ background: '#2e2e2e' }}>
               <div className="w-full bg-[#3a3a3a]" style={{ aspectRatio: '4/3' }} />
-              <div className="p-4 space-y-3" style={{ minHeight: 180 }}>
-                <div className="h-4 bg-[#3a3a3a] rounded w-3/4" />
+              <div className="p-2.5 sm:p-4 space-y-2 sm:space-y-3" style={{ minHeight: 120 }}>
+                <div className="h-3 sm:h-4 bg-[#3a3a3a] rounded w-3/4" />
                 <div className="h-3 bg-[#3a3a3a] rounded w-1/2" />
-                <div className="h-5 bg-[#3a3a3a] rounded w-1/3" />
+                <div className="h-4 sm:h-5 bg-[#3a3a3a] rounded w-1/3" />
               </div>
             </div>
           ))}

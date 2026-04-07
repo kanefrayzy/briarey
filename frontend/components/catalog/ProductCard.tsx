@@ -75,14 +75,14 @@ export default function ProductCard({ name, flow, price, image, compact, href, c
     >
       {/* Изображение */}
       <div className="w-full flex-shrink-0 relative bg-[#333]" style={{ aspectRatio: '4/3' }}>
-        <Image src={image} alt={name} fill className="object-contain p-6" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
+        <Image src={image} alt={name} fill className="object-contain p-3 sm:p-6" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw" placeholder="blur" blurDataURL={BLUR_PLACEHOLDER} />
       </div>
 
       {/* Информация */}
-      <div className="p-4 flex flex-col gap-3 bg-black/40 flex-1 min-h-[180px]">
+      <div className="p-2.5 sm:p-4 flex flex-col gap-1.5 sm:gap-3 bg-black/40 flex-1 min-h-[120px] sm:min-h-[180px]">
         {/* Название + тех. документ */}
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="text-white font-bold text-[15px] leading-snug flex-1 min-w-0">{name}</h3>
+        <div className="flex items-start justify-between gap-1 sm:gap-3">
+          <h3 className="text-white font-bold text-[12px] sm:text-[15px] leading-snug flex-1 min-w-0 line-clamp-2">{name}</h3>
           {techDocUrl && (
             <a
               href={techDocUrl}
@@ -91,13 +91,13 @@ export default function ProductCard({ name, flow, price, image, compact, href, c
               onClick={e => e.stopPropagation()}
               className="flex-shrink-0 flex items-center gap-1 text-white/60 hover:text-white/50 transition-colors text-sm whitespace-nowrap"
             >
-              тех. документ
+              <span className="hidden sm:inline">тех. документ</span>
               <DownloadIcon />
             </a>
           )}
           {!techDocUrl && (
             <button className="flex-shrink-0 flex items-center gap-1 text-white/60 hover:text-white/50 transition-colors text-sm whitespace-nowrap">
-              тех. документ
+              <span className="hidden sm:inline">тех. документ</span>
               <DownloadIcon />
             </button>
           )}
@@ -105,18 +105,18 @@ export default function ProductCard({ name, flow, price, image, compact, href, c
 
         {/* Производительность */}
         {showFlow && (
-          <div className="flex items-center gap-1.5">
-            <SpeedIcon />
-            <span className="text-white text-[13px]">{flow}</span>
+          <div className="flex items-center gap-1 sm:gap-1.5">
+            <SpeedIcon size={14} />
+            <span className="text-white text-[11px] sm:text-[13px]">{flow}</span>
           </div>
         )}
 
         {/* Цена + В корзину */}
-        <div className="flex items-center justify-between mt-1">
-          <span className="text-white font-semibold text-[18px]">
-            {price} <span className="ml-2 font-normal text-[#7a563e]">₽</span>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5 sm:gap-0 mt-auto">
+          <span className="text-white font-semibold text-[13px] sm:text-[18px]">
+            {price} <span className="ml-1 sm:ml-2 font-normal text-[#7a563e]">₽</span>
           </span>
-          <Button variant="calculator">Подробнее</Button>
+          <Button variant="calculator" className="!text-[11px] sm:!text-sm !px-2 sm:!px-4 !py-1.5 sm:!py-2 w-full sm:w-auto !justify-center">Подробнее</Button>
         </div>
       </div>
     </article>

@@ -99,7 +99,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
         </div>
       </div>
 
-      {item.configuration && item.configuration.hoseCost > 0 && (
+      {item.configuration && (
         <div className="md:hidden mb-2">
           <p className="text-white/60 text-sm mb-2">Конфигурация:</p>
           <ul className="flex flex-col gap-1.5">
@@ -115,6 +115,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
                 Напорный рукав — {item.configuration.exhaust_length}м
               </span>
             </li>
+            {item.configuration.hoseCost > 0 && (
             <li className="flex items-center justify-between gap-4 text-sm">
               <span className="text-white/80 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
@@ -122,6 +123,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
               </span>
               <span className="text-white/50 shrink-0">+{item.configuration.hoseCost.toLocaleString('ru-RU')} ₽</span>
             </li>
+            )}
           </ul>
         </div>
       )}
@@ -170,7 +172,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
         </div>
 
         <div className="flex-1 min-w-0 flex flex-col justify-between">
-          {item.configuration && item.configuration.hoseCost > 0 && (
+          {item.configuration && (
             <div className="mb-4">
               <p className="text-white/60 text-base mb-3">Конфигурация:</p>
               <ul className="flex flex-col gap-2">
@@ -186,6 +188,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
                     Напорный рукав — {item.configuration.exhaust_length}м
                   </span>
                 </li>
+                {item.configuration.hoseCost > 0 && (
                 <li className="flex items-center justify-between gap-4 text-base">
                   <span className="text-white/80 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
@@ -193,6 +196,7 @@ function CartItemRow({ item, isLast, onIncrease, onDecrease, onRemove }: CartIte
                   </span>
                   <span className="text-white/50 shrink-0">+{item.configuration.hoseCost.toLocaleString('ru-RU')} ₽</span>
                 </li>
+                )}
               </ul>
             </div>
           )}

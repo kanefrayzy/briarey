@@ -310,10 +310,14 @@ export default function CalculatorQuiz() {
       accessoriesSpecs = items.map(it => ({ key: '', label: it.label, value: it.value }))
     }
 
+    // Suction length in meters
+    const suctionLength = form.suction ? Number(form.suction) : 5
+    const exhaustLength = form.discharge ?? 10
+
     addItem({
       productId: topProduct.id,
       slug: topProduct.slug,
-      name: topProduct.name,
+      name: `${topProduct.name} + комплект под расчёт`,
       image: storageUrl(topProduct.image),
       price: topProduct.price,
       qty: 1,
@@ -322,6 +326,11 @@ export default function CalculatorQuiz() {
         ...topProduct.specs.slice(0, 3).map(s => ({ key: s.key ?? '', label: s.label, value: s.value })),
         ...accessoriesSpecs,
       ],
+      configuration: {
+        suction_length: suctionLength,
+        exhaust_length: exhaustLength,
+        hoseCost: 0,
+      },
     })
     setAddedToCart(true)
   }

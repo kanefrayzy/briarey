@@ -71,6 +71,7 @@ export default function CatalogSection({ noBgImage = false, showButton = true, a
   const [catPage, setCatPage]     = useState(0)
   const [page, setPage]           = useState(0)
   const [activeCardIdx, setActiveCardIdx] = useState(0)
+  const catScrollRef = useRef<HTMLDivElement>(null)
 
   // Self-fetch on mount if no props provided, or fetch products for default category
   useEffect(() => {
@@ -228,43 +229,44 @@ export default function CatalogSection({ noBgImage = false, showButton = true, a
           ))}
         </div>
 
-        {/* КАТЕГОРИИ MOBILE — 3 за раз, стрелки */}
+        {/* КАТЕГОРИИ MOBILE — стрелки + свайп */}
         <div
           className="flex md:hidden items-stretch mb-6 -mx-4"
           style={{ background: '#2e2e2e' }}
         >
           <button
-            onClick={() => setCatPage(p => Math.max(p - 1, 0))}
-            disabled={catPage === 0}
-            className="flex-shrink-0 w-10 flex items-center justify-center disabled:opacity-20 transition-opacity"
+            onClick={() => {
+              const el = catScrollRef.current
+              if (el) el.scrollBy({ left: -el.clientWidth * 0.6, behavior: 'smooth' })
+            }}
+            className="flex-shrink-0 w-10 flex items-center justify-center transition-opacity"
           >
             <CategoryArrowLeftIcon />
           </button>
 
-          <div className="flex flex-1 items-start py-0 px-0 lg:px-3 lg:py-3">
-            {visibleCats.map((cat, i) => {
-              const globalIdx = catPage * CATS_PER_PAGE + i
-              return (
+          <div
+            ref={catScrollRef}
+            className="flex flex-1 items-start overflow-x-auto scrollbar-hide"
+            style={{ WebkitOverflowScrolling: 'touch' as any }}
+          >
+            {CATEGORIES.map((cat, i) => (
+              <div key={cat.label} className="flex-shrink-0" style={{ minWidth: 'calc(100% / 3)' }}>
                 <CategoryCard
-                  key={cat.label}
                   label={cat.label}
                   icon={cat.icon}
-                  active={globalIdx === active}
-                  onClick={() => handleCategoryClick(globalIdx)}
+                  active={i === active}
+                  onClick={() => handleCategoryClick(i)}
                 />
-              )
-            })}
-            {visibleCats.length < CATS_PER_PAGE &&
-              Array.from({ length: CATS_PER_PAGE - visibleCats.length }).map((_, i) => (
-                <div key={`empty-${i}`} className="flex flex-1" />
-              ))
-            }
+              </div>
+            ))}
           </div>
 
           <button
-            onClick={() => setCatPage(p => Math.min(p + 1, totalCatPages - 1))}
-            disabled={catPage === totalCatPages - 1}
-            className="flex-shrink-0 w-10 flex items-center justify-center disabled:opacity-20 transition-opacity"
+            onClick={() => {
+              const el = catScrollRef.current
+              if (el) el.scrollBy({ left: el.clientWidth * 0.6, behavior: 'smooth' })
+            }}
+            className="flex-shrink-0 w-10 flex items-center justify-center transition-opacity"
           >
             <CategoryArrowRightIcon />
           </button>
