@@ -188,27 +188,7 @@ function AccessoriesList({
   discharge: DischargeLen
   rooms: number
 }) {
-  const zoneMult = zones === 'two' ? 2 : 1
-  const nodesCount = rooms * zoneMult
-  const hosesCount = discharge / 10
-  const suctionLabel = zones === 'one'
-    ? (suction === '1.5' ? 'Всасывающий рукав 1,5 м' : 'Всасывающий рукав 5 м (стандарт)')
-    : (suction === '3' ? 'Двухзонная обвязка: нижний 2,5 м + верхний 3 м' : 'Двухзонная обвязка: нижний 2,5 м + верхний 5 м')
-
-  const items = [
-    {
-      label: `Узлы стыковочные ${nodeType === 'supply_exhaust' ? 'приточно-вытяжные' : 'вытяжные'} (${ei})`,
-      value: `${nodesCount} шт.`,
-    },
-    {
-      label: suctionLabel,
-      value: '1 компл.',
-    },
-    {
-      label: `Рукав напорный РН (10 м × ${hosesCount})`,
-      value: `${hosesCount} шт. = ${discharge} м`,
-    },
-  ]
+  const items = getAccessoriesItems(zones, nodeType, ei, suction, discharge, rooms)
 
   return (
     <div
@@ -231,6 +211,37 @@ function AccessoriesList({
   )
 }
 
+function getAccessoriesItems(
+  zones: ZoneType,
+  nodeType: NodeType,
+  ei: EI,
+  suction: string,
+  discharge: DischargeLen,
+  rooms: number,
+) {
+  const zoneMult = zones === 'two' ? 2 : 1
+  const nodesCount = rooms * zoneMult
+  const hosesCount = discharge / 10
+  const suctionLabel = zones === 'one'
+    ? (suction === '1.5' ? 'Всасывающий рукав 1,5 м' : 'Всасывающий рукав 5 м (стандарт)')
+    : (suction === '3' ? 'Двухзонная обвязка: нижний 2,5 м + верхний 3 м' : 'Двухзонная обвязка: нижний 2,5 м + верхний 5 м')
+
+  return [
+    {
+      label: `Узлы стыковочные ${nodeType === 'supply_exhaust' ? 'приточно-вытяжные' : 'вытяжные'} (${ei})`,
+      value: `${nodesCount} шт.`,
+    },
+    {
+      label: suctionLabel,
+      value: '1 компл.',
+    },
+    {
+      label: `Рукав напорный РН (10 м × ${hosesCount})`,
+      value: `${hosesCount} шт. = ${discharge} м`,
+    },
+  ]
+}
+
 /* ── Главный компонент ── */
 const TOTAL_STEPS = 7
 
@@ -241,6 +252,8 @@ export default function CalculatorQuiz() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [result, setResult] = useState<null | Awaited<ReturnType<typeof api.getCalculatorRecommend>>>(null)
+  const [addedToCart, setAddedToCart] = useState(false)
+  const { addItem } = useCart()
 
   const set = <K extends keyof FormState>(key: K, val: FormState[K]) =>
     setForm(f => ({ ...f, [key]: val }))
@@ -283,6 +296,34 @@ export default function CalculatorQuiz() {
     setResult(null)
     setError('')
     setStep(0)
+    setAddedToCart(false)
+  }
+
+  const addRecommendedToCart = () => {
+    if (!result?.products?.length) return
+    const topProduct = result.products[0]
+
+    // Build accessories description for specs
+    let accessoriesSpecs: { key: string; label: string; value: string }[] = []
+    if (form.zones && form.nodeType && form.ei && form.suction && form.discharge) {
+      const items = getAccessoriesItems(form.zones, form.nodeType, form.ei, form.suction, form.discharge, rooms)
+      accessoriesSpecs = items.map(it => ({ key: '', label: it.label, value: it.value }))
+    }
+
+    addItem({
+      productId: topProduct.id,
+      slug: topProduct.slug,
+      name: topProduct.name,
+      image: storageUrl(topProduct.image),
+      price: topProduct.price,
+      qty: 1,
+      extras: [],
+      specs: [
+        ...topProduct.specs.slice(0, 3).map(s => ({ key: s.key ?? '', label: s.label, value: s.value })),
+        ...accessoriesSpecs,
+      ],
+    })
+    setAddedToCart(true)
   }
 
   const openContact = (currentResult: typeof result) => {
@@ -298,6 +339,13 @@ export default function CalculatorQuiz() {
       ? `  — ${topProduct.name} (${topProduct.productivity.toLocaleString('ru-RU')} м³/ч)`
       : ''
 
+    // Build accessories description
+    let accessoriesLines: string[] = []
+    if (form.zones && form.nodeType && form.ei && form.suction && form.discharge) {
+      const items = getAccessoriesItems(form.zones, form.nodeType, form.ei, form.suction, form.discharge, rooms)
+      accessoriesLines = items.map(it => `  — ${it.label}: ${it.value}`)
+    }
+
     const lines: string[] = [
       'Расчёт дымоудаления:',
       `• Объём помещения: ${volumeLine}`,
@@ -307,6 +355,7 @@ export default function CalculatorQuiz() {
       form.discharge ? `• Напорная линия: ${form.discharge} м` : '',
       currentResult ? `• Требуемая производительность: ${currentResult.required_productivity.toLocaleString('ru-RU')} м³/ч` : '',
       productLine ? `\nРекомендованное оборудование:\n${productLine}` : '',
+      accessoriesLines.length ? `\nКомплектация под расчёт:\n${accessoriesLines.join('\n')}` : '',
     ].filter(Boolean)
 
     sessionStorage.setItem('contactFormPrefill', JSON.stringify({
@@ -532,8 +581,17 @@ export default function CalculatorQuiz() {
         )}
 
         <div className="mt-6 flex gap-3 flex-wrap">
-          <Button variant="calculator" onClick={() => openContact(result)}>
-            Получить коммерческое предложение
+          {result.products.length > 0 && (
+            <Button
+              variant="calculator"
+              onClick={addRecommendedToCart}
+              disabled={addedToCart}
+            >
+              {addedToCart ? '✓ Добавлено в корзину' : 'Добавить дымосос + комплект в корзину'}
+            </Button>
+          )}
+          <Button variant="outline" onClick={() => openContact(result)}>
+            Отправить на консультацию
           </Button>
           <Button href="/catalog/dymososy" variant="outline">
             Весь каталог дымососов

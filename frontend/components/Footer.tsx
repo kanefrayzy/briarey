@@ -151,6 +151,16 @@ export default function Footer({ settings: settingsProp }: FooterProps) {
             <span>Тел: <a href="tel:79011837079" className="hover:text-white transition-colors">+7 (901) 183-70-79</a></span>
             <span>e-mail: <a href="mailto:info@briarey.ru" className="hover:text-white transition-colors">info@briarey.ru</a></span>
           </div>
+          <div className="flex flex-col gap-2 text-white/50 text-xs">
+            <a href="https://yandex.com/maps/-/CPfKzPl6" target="_blank" rel="noopener noreferrer" className="flex items-start gap-1.5 hover:text-white transition-colors">
+              <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span>Производство: 140104, Московская область, г. Раменское, ул. 100-й Свирской Дивизии, д.11</span>
+            </a>
+            <a href="https://yandex.com/maps/-/CPfKvXI0" target="_blank" rel="noopener noreferrer" className="flex items-start gap-1.5 hover:text-white transition-colors">
+              <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span>Офис: Молодёжная улица, 26В, Раменское, Московская область</span>
+            </a>
+          </div>
           <p className="text-white/30">График работы:<br />{workHours}</p>
         </div>
       </div>
@@ -194,6 +204,16 @@ export default function Footer({ settings: settingsProp }: FooterProps) {
               <span>Тел: <a href={`tel:${phone1.replace(/[^\d+]/g, '')}`} className="hover:text-white transition-colors">{phone1}</a></span>
               <span>Тел: <a href={`tel:${phone2.replace(/[^\d+]/g, '')}`} className="hover:text-white transition-colors">{phone2}</a></span>
               <span>e-mail: <a href={`mailto:${contactEmail}`} className="hover:text-white transition-colors">{contactEmail}</a></span>
+            </div>
+            <div className="flex flex-col gap-2 text-white/50 text-xs">
+              <a href="https://yandex.com/maps/-/CPfKzPl6" target="_blank" rel="noopener noreferrer" className="flex items-start gap-1.5 hover:text-white transition-colors">
+                <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <span>Производство: 140104, Московская область, г. Раменское, ул. 100-й Свирской Дивизии, д.11</span>
+              </a>
+              <a href="https://yandex.com/maps/-/CPfKvXI0" target="_blank" rel="noopener noreferrer" className="flex items-start gap-1.5 hover:text-white transition-colors">
+                <svg className="w-4 h-4 shrink-0 mt-0.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+                <span>Офис: Молодёжная улица, 26В, Раменское, Московская область</span>
+              </a>
             </div>
             <Link href="/certificates" className="text-white/70 text-base underline hover:text-white transition-colors">
               Скачать реквизиты

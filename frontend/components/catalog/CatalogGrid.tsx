@@ -4,8 +4,6 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import CategoryCard from './CategoryCard'
 import ProductCard from './ProductCard'
 import SectionHeading from '@/components/SectionHeading'
-import CategoryArrowLeftIcon from '@/components/icons/CategoryArrowLeftIcon'
-import CategoryArrowRightIcon from '@/components/icons/CategoryArrowRightIcon'
 import { Category as ApiCategory, Product as ApiProduct, api, storageUrl, productImageUrl } from '@/lib/api'
 
 const DEFAULT_CATEGORIES = [
@@ -174,51 +172,26 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
         ))}
       </div>
 
-      {/* Категории — mobile */}
+      {/* Категории — mobile (swipeable) */}
       <div
-        className="flex md:hidden items-stretch mb-6 -mx-4"
-        style={{ background: '#2e2e2e' }}
+        className="flex md:hidden items-stretch mb-6 -mx-4 overflow-x-auto scrollbar-hide"
+        style={{ background: '#2e2e2e', WebkitOverflowScrolling: 'touch' }}
       >
-        <button
-          onClick={() => setCatPage(p => Math.max(p - 1, 0))}
-          disabled={catPage === 0}
-          className="flex-shrink-0 w-10 flex items-center justify-center disabled:opacity-20 transition-opacity"
-        >
-          <CategoryArrowLeftIcon />
-        </button>
-
-        <div className="flex flex-1 items-start">
-          {visibleCats.map((cat, i) => {
-            const globalIdx = catPage * CATS_PER_PAGE + i
-            return (
-              <CategoryCard
-                key={cat.label}
-                label={cat.label}
-                icon={cat.icon}
-                active={globalIdx === activeCategory}
-                onClick={() => handleCategoryChange(globalIdx)}
-              />
-            )
-          })}
-          {visibleCats.length < CATS_PER_PAGE &&
-            Array.from({ length: CATS_PER_PAGE - visibleCats.length }).map((_, i) => (
-              <div key={`empty-${i}`} className="flex flex-1" />
-            ))
-          }
-        </div>
-
-        <button
-          onClick={() => setCatPage(p => Math.min(p + 1, totalCatPages - 1))}
-          disabled={catPage === totalCatPages - 1}
-          className="flex-shrink-0 w-10 flex items-center justify-center disabled:opacity-20 transition-opacity"
-        >
-          <CategoryArrowRightIcon />
-        </button>
+        {categories.map((cat, i) => (
+          <div key={cat.label} className="flex-shrink-0" style={{ minWidth: 'calc(100% / 3.5)' }}>
+            <CategoryCard
+              label={cat.label}
+              icon={cat.icon}
+              active={i === activeCategory}
+              onClick={() => handleCategoryChange(i)}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Сетка продуктов — 3 колонки */}
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mb-10">
           {[1, 2, 3, 4, 5, 6].map(i => (
             <div key={i} className="rounded-2xl overflow-hidden animate-pulse" style={{ background: '#2e2e2e' }}>
               <div className="w-full bg-[#3a3a3a]" style={{ aspectRatio: '4/3' }} />
@@ -231,7 +204,7 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
           ))}
         </div>
       ) : (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 mb-10">
         {visible.map((product, i) => (
           <div
             key={product.id}
