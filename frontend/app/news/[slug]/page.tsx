@@ -8,6 +8,8 @@ import NewsCard from '@/components/news/NewsCard'
 import { api, storageUrl } from '@/lib/api'
 import PlaySmallIcon from '@/components/icons/PlaySmallIcon'
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://briarey.ru'
+
 type Props = {
   params: {
     slug: string
@@ -16,10 +18,18 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = await api.getNewsDetail(params.slug).catch(() => null)
-  if (!item) return { title: 'Новость | БРИАРЕЙ' }
+  if (!item) return { title: 'Новость' }
   return {
-    title: `${item.title} | БРИАРЕЙ`,
+    title: item.title,
     description: item.excerpt,
+    alternates: { canonical: `/news/${params.slug}` },
+    openGraph: {
+      type: 'article',
+      title: item.title,
+      description: item.excerpt,
+      url: `${SITE_URL}/news/${params.slug}`,
+      images: item.image ? [{ url: storageUrl(item.image), alt: item.title }] : undefined,
+    },
   }
 }
 
@@ -52,10 +62,30 @@ export default async function NewsDetailsPage({ params }: Props) {
       slug: n.slug,
     }))
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: item.title,
+    description: item.excerpt,
+    image: item.image ? storageUrl(item.image) : undefined,
+    datePublished: item.date,
+    author: { '@type': 'Organization', name: 'ООО «Бриарей»' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ООО «Бриарей»',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/logo.svg` },
+    },
+    mainEntityOfPage: `${SITE_URL}/news/${params.slug}`,
+  }
+
   return (
     <>
       <Header />
       <main>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        />
         <PageHeading title="Новости" />
 
         <section className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-14 pb-10 md:pb-14 lg:pb-20">

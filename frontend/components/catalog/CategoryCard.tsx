@@ -16,7 +16,7 @@ export default function CategoryCard({ label, icon, active, onClick, href }: Cat
   const inner = (
     <>
       <div className="w-8 h-8 relative flex-shrink-0">
-        <Image src={icon} alt={label} fill className="object-contain" />
+        <Image src={icon} alt={label} fill className="object-contain" sizes="32px" />
       </div>
       <span
         className="text-[11px] leading-tight text-center"

@@ -6,9 +6,10 @@ import ContactForm from '@/components/ContactForm'
 import CalculatorQuiz from '@/components/calculator/CalculatorQuiz'
 
 export const metadata: Metadata = {
-  title: 'Калькулятор подбора дымососа — Бриарей',
+  title: 'Калькулятор подбора дымососа',
   description:
     'Подберите дымосос для систем дымоудаления по объёму помещения, скорости удаления и конфигурации линий.',
+  alternates: { canonical: '/calculator' },
 }
 
 export default function CalculatorPage() {

@@ -414,6 +414,7 @@ export default function ProductDetail({ product }: Props) {
             mb="mb-0"
             titleClass="text-2xl lg:text-[48px] font-bold text-white leading-tight"
             subtitleClass="text-white/60 text-[15px] leading-snug text-right max-w-[260px] mt-2"
+            as="h1"
           />
         </div>
       </section>
@@ -446,7 +447,7 @@ export default function ProductDetail({ product }: Props) {
                     onClick={() => setActiveThumb(i)}
                     className={`relative rounded-lg overflow-hidden transition-all w-[72px] h-[72px] bg-[#2a2a2a] border-2 ${i === activeThumb ? 'border-[#7a563e]' : 'border-transparent'}`}
                   >
-                    <Image src={src} alt="" fill className="object-contain p-1" sizes="72px" />
+                    <Image src={src} alt={`${product.name} — фото ${i + 1}`} fill className="object-contain p-1" sizes="72px" />
                   </button>
                 ))}
               </div>
@@ -456,9 +457,9 @@ export default function ProductDetail({ product }: Props) {
           {/* Правая: информация */}
           <div className="lg:w-[44%] flex flex-col justify-start gap-4 px-6 py-8 lg:px-10 bg-black/35 rounded-r-[10px]">
             {/* Название */}
-            <h1 className="text-white font-bold text-2xl lg:text-[32px] leading-tight">
+            <h2 className="text-white font-bold text-2xl lg:text-[32px] leading-tight">
               {product.name}
-            </h1>
+            </h2>
 
             {/* Цена */}
             <div className="text-white/80 text-2xl lg:text-3xl font-semibold">

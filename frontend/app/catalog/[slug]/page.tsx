@@ -1,3 +1,5 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ProductDetail from '@/components/catalog/ProductDetail'
@@ -6,16 +8,46 @@ import SmartPickSection from '@/components/SmartPickSection'
 import ContactForm from '@/components/ContactForm'
 import { api, storageUrl, productImageUrl } from '@/lib/api'
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://briarey.ru'
+
 interface Props {
   params: { slug: string }
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = await api.getProduct(params.slug).catch(() => null)
-  if (product) return { title: `${product.name} — Бриарей` }
+  if (product) {
+    const desc = product.badge || `${product.name} — купить от ${product.price?.toLocaleString('ru-RU')} ₽. Производство ООО «Бриарей».`
+    const image = productImageUrl(product.slug, product.image)
+    return {
+      title: product.name,
+      description: desc,
+      alternates: { canonical: `/catalog/${params.slug}` },
+      openGraph: {
+        type: 'website',
+        title: product.name,
+        description: desc,
+        url: `${SITE_URL}/catalog/${params.slug}`,
+        images: [{ url: image, alt: product.name }],
+      },
+    }
+  }
   const categoryData = await api.getCategoryProducts(params.slug).catch(() => null)
-  if (categoryData) return { title: `${categoryData.category.name} — Каталог Бриарей` }
-  return { title: 'Каталог — Бриарей' }
+  if (categoryData) {
+    const desc = `${categoryData.category.name} — каталог оборудования от производителя ООО «Бриарей».`
+    return {
+      title: `${categoryData.category.name} — Каталог`,
+      description: desc,
+      alternates: { canonical: `/catalog/${params.slug}` },
+      openGraph: {
+        type: 'website',
+        title: `${categoryData.category.name} — Каталог Бриарей`,
+        description: desc,
+        url: `${SITE_URL}/catalog/${params.slug}`,
+      },
+    }
+  }
+  return { title: 'Страница не найдена' }
 }
 
 export default async function CatalogSlugPage({ params }: Props) {
@@ -71,10 +103,31 @@ export default async function CatalogSlugPage({ params }: Props) {
       })) ?? [],
     }
 
+    const productJsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      image: `${SITE_URL}${product.image}`,
+      description: apiProduct.badge || product.name,
+      brand: { '@type': 'Brand', name: 'Бриарей' },
+      manufacturer: { '@type': 'Organization', name: 'ООО «Бриарей»' },
+      offers: {
+        '@type': 'Offer',
+        url: `${SITE_URL}/catalog/${slug}`,
+        priceCurrency: 'RUB',
+        price: product.price,
+        availability: 'https://schema.org/InStock',
+      },
+    }
+
     return (
       <>
         <Header />
         <main style={{ paddingTop: 80 }}>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+          />
           <ProductDetail product={product} />
         </main>
         <Footer />
@@ -88,8 +141,11 @@ export default async function CatalogSlugPage({ params }: Props) {
     api.getCategories().catch(() => null),
   ])
 
-  // Если категория найдена — рендерим с её данными, иначе всё равно рендерим
-  // каталог с нужным slug'ом (CatalogGrid сам подберёт нужную вкладку)
+  // Если ни продукт, ни категория не найдены — 404
+  if (!categoryData) {
+    notFound()
+  }
+
   return (
     <>
       <Header />

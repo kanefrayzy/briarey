@@ -66,8 +66,9 @@ function NewsChunkSection({ chunk }: { chunk: NewsArticle[] }) {
 }
 
 export const metadata = {
-  title: 'Новости | БРИАРЕЙ',
-  description: 'Новости и пресс-служба компании БРИАРЕЙ.',
+  title: 'Новости',
+  description: 'Новости и пресс-служба компании Бриарей.',
+  alternates: { canonical: '/news' },
 }
 
 export default async function NewsPage() {

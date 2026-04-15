@@ -11,6 +11,8 @@ interface SectionHeadingProps {
   titleClass?: string
   /** override subtitle classes */
   subtitleClass?: string
+  /** heading level, default h2 */
+  as?: 'h1' | 'h2' | 'h3'
 }
 
 export default function SectionHeading({
@@ -20,10 +22,11 @@ export default function SectionHeading({
   mb = 'mb-12',
   titleClass = 'text-3xl lg:text-4xl font-bold text-white',
   subtitleClass = 'text-white/60 text-base text-right mt-2',
+  as: Tag = 'h2',
 }: SectionHeadingProps) {
   return (
     <div className={`flex ${align === 'baseline' ? 'items-baseline' : 'items-start'} justify-between ${mb}`}>
-      <h2 className={titleClass}>{title}</h2>
+      <Tag className={titleClass}>{title}</Tag>
       {subtitle && <p className={`hidden md:block ${subtitleClass}`}>{subtitle}</p>}
     </div>
   )

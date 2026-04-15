@@ -10,9 +10,10 @@ import ContactForm from '@/components/ContactForm'
 import { api, storageUrl } from '@/lib/api'
 
 export const metadata = {
-  title: 'О компании | БРИАРЕЙ',
+  title: 'О компании',
   description:
     'ООО «БРИАРЕЙ» — ведущий российский производитель оборудования газодымоудаления. ISO 9001, собственное производство, патенты.',
+  alternates: { canonical: '/about' },
 }
 
 export default async function AboutPage() {

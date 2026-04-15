@@ -7,8 +7,9 @@ import CertGrid from '@/components/certificates/CertGrid'
 import { api, storageUrl } from '@/lib/api'
 
 export const metadata = {
-  title: 'Информация | БРИАРЕЙ',
-  description: 'Сертификаты и декларации соответствия продукции БРИАРЕЙ.',
+  title: 'Сертификаты и информация',
+  description: 'Сертификаты и декларации соответствия продукции Бриарей.',
+  alternates: { canonical: '/certificates' },
 }
 
 export default async function CertificatesPage() {

@@ -21,7 +21,7 @@ export default function CalculatorCTA({ data }: CalculatorCTAProps) {
         <div className="hidden lg:block lg:w-80 xl:w-96 flex-shrink-0 relative">
           {image ? (
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
-              <Image src={image} alt={title} fill className="object-cover" sizes="(max-width: 1024px) 0px, 384px" />
+              <Image src={image} alt={title} fill className="object-cover" sizes="384px" />
             </div>
           ) : (
             <div className="aspect-[4/3] bg-[#3F3F3F] rounded-lg" />

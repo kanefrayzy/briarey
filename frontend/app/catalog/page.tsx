@@ -6,7 +6,9 @@ import ContactForm from '@/components/ContactForm'
 import { api } from '@/lib/api'
 
 export const metadata = {
-  title: 'Каталог оборудования — Бриарей',
+  title: 'Каталог оборудования',
+  description: 'Каталог противопожарного оборудования от производителя ООО «Бриарей»: дымососы, узлы стыковочные, клапаны.',
+  alternates: { canonical: '/catalog' },
 }
 
 export default async function CatalogPage() {

@@ -5,8 +5,9 @@ import CheckoutForm from '@/components/checkout/CheckoutForm'
 import CatalogSection from '@/components/CatalogSection'
 
 export const metadata = {
-  title: 'Оформление заказа | БРИАРЕЙ',
-  description: 'Оформите заказ на оборудование БРИАРЕЙ.',
+  title: 'Оформление заказа',
+  description: 'Оформите заказ на оборудование Бриарей.',
+  alternates: { canonical: '/checkout' },
 }
 
 export default function CheckoutPage() {

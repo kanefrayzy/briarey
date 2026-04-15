@@ -9,8 +9,9 @@ import VacancyContact from '@/components/vacancies/VacancyContact'
 import { api, storageUrl } from '@/lib/api'
 
 export const metadata = {
-  title: 'Вакансии | БРИАРЕЙ',
-  description: 'Открытые вакансии в компании БРИАРЕЙ — производителе оборудования газодымоудаления.',
+  title: 'Вакансии',
+  description: 'Открытые вакансии в компании Бриарей — производителе оборудования газодымоудаления.',
+  alternates: { canonical: '/vacancies' },
 }
 
 export default async function VacanciesPage() {

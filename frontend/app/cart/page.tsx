@@ -4,8 +4,9 @@ import PageHeading from '@/components/PageHeading'
 import CartView from '@/components/cart/CartView'
 
 export const metadata = {
-  title: 'Корзина | БРИАРЕЙ',
-  description: 'Ваша корзина — оформите заказ на оборудование БРИАРЕЙ.',
+  title: 'Корзина',
+  description: 'Ваша корзина — оформите заказ на оборудование Бриарей.',
+  alternates: { canonical: '/cart' },
 }
 
 export default function CartPage() {

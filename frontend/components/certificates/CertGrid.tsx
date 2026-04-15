@@ -13,7 +13,7 @@ function CertCard({ title, image, file }: Omit<Certificate, 'id'>) {
     <div className="flex flex-col rounded-xl overflow-hidden bg-[#2a2a2a]">
       {/* Превью */}
       <div className="relative w-full bg-[#333333]" style={{ aspectRatio: '4/3' }}>
-        <Image src={image} alt={title} fill className="object-contain p-3" />
+        <Image src={image} alt={title} fill className="object-contain p-3" sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw" />
       </div>
 
       {/* Текст и ссылка */}

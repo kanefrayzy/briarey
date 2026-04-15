@@ -8,8 +8,9 @@ import ContactForm from '@/components/ContactForm'
 import { api } from '@/lib/api'
 
 export const metadata = {
-  title: 'Дилерам | БРИАРЕЙ',
-  description: 'Станьте дилером БРИАРЕЙ — ведущего производителя оборудования газодымоудаления.',
+  title: 'Дилерам',
+  description: 'Станьте дилером Бриарей — ведущего производителя оборудования газодымоудаления.',
+  alternates: { canonical: '/dealers' },
 }
 
 export default async function DealersPage() {
