@@ -37,8 +37,8 @@ export default function ProductionSection({ section, features: apiFeatures, hide
     : defaultFeatures
   const sectionTitle = section?.title || 'Производство'
   const sectionSubtitle = section?.subtitle || 'Локализация производства 95%'
-  const buttonText = section?.button_text || 'Видео инструкции'
-  const buttonLink = section?.button_link || '/video'
+  const buttonText = section?.button_text || 'О компании'
+  const buttonLink = section?.button_link || '/about'
 
   const [active, setActive] = useState(0)
   const current = items[active]

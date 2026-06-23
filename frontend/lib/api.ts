@@ -385,6 +385,8 @@ export const api = {
     name: string;
     phone: string;
     email?: string;
+    company?: string;
+    inn?: string;
     message?: string;
     topic?: string;
     is_subscribed?: boolean;
@@ -407,8 +409,26 @@ export const api = {
     }),
 
   // Calculator
-  getCalculatorRecommend: (params: { volume: number; speed: 'fast' | 'standard'; zones: number }) =>
-    fetchApi<CalculatorResult>(`/calculator/recommend?volume=${params.volume}&speed=${params.speed}&zones=${params.zones}`),
+  getCalculatorRecommend: (params: {
+    area: number
+    speed: 'fast' | 'standard'
+    zones: number
+    nodeType?: 'exhaust' | 'supply_exhaust'
+    suction?: number
+    discharge?: number
+    rooms?: number
+  }) => {
+    const q = new URLSearchParams({
+      area: String(params.area),
+      speed: params.speed,
+      zones: String(params.zones),
+      node_type: params.nodeType ?? 'exhaust',
+      suction: String(params.suction ?? 5),
+      discharge: String(params.discharge ?? 10),
+      rooms: String(params.rooms ?? 1),
+    })
+    return fetchApi<CalculatorResult>(`/calculator/recommend?${q.toString()}`)
+  },
 };
 
 // Order types
@@ -445,10 +465,20 @@ export interface CalculatorProductResult {
   specs: { key: string | null; label: string; value: string; unit: string | null }[]
 }
 
+export interface CalculatorAccessory {
+  id: number
+  slug: string
+  name: string
+  price: number
+  image: string | null
+  qty: number
+}
+
 export interface CalculatorResult {
   required_productivity: number
-  volume: number
+  area: number
   speed: 'fast' | 'standard'
   zones: number
   products: CalculatorProductResult[]
+  accessories: CalculatorAccessory[]
 }

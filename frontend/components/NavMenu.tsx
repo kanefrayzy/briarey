@@ -14,7 +14,7 @@ export const catalogItems = [
   { label: 'Шкафы для хранения', href: '/catalog/shkafy-dlya-hraneniya', icon: '/images/catalog/icons/shkaf.png' },
   { label: 'Двери противопожарные', href: '/catalog/dveri-protivopozharnye', icon: '/images/catalog/icons/dver.png' },
   { label: 'Установки сбора вещества', href: '/catalog/ustanovki-sbora-veshchestva', icon: '/images/catalog/icons/ustanovki.png' },
-  { label: 'Оборудование для пожарных машин', href: '/catalog/dymososy-dlya-pozharnyh-mashin', icon: '/images/catalog/icons/dymosos-mashin.png' },
+  { label: 'Оборудование для пожарных расчётов', href: '/catalog/dymososy-dlya-pozharnyh-mashin', icon: '/images/catalog/icons/dymosos-mashin.png' },
 ]
 
 const navLinks = [
@@ -23,6 +23,7 @@ const navLinks = [
   { label: 'О компании', href: '/about' },
   { label: 'Информация', href: '/certificates' },
   { label: 'Дилерам', href: '/dealers' },
+  { label: 'Доставка', href: '/delivery' },
   { label: 'Новости', href: '/news' },
   { label: 'Вакансии', href: '/vacancies' },
   { label: 'Контакты', href: '#footer-contacts' },

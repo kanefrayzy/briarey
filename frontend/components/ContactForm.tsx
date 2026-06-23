@@ -36,6 +36,8 @@ export default function ContactForm() {
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
+  const [company, setCompany] = useState('')
+  const [inn, setInn] = useState('')
   const [message, setMessage] = useState('')
   const [consent, setConsent] = useState(true)
   const [subscribe, setSubscribe] = useState(true)
@@ -95,6 +97,8 @@ export default function ContactForm() {
         name,
         phone,
         email: email || undefined,
+        company: company || undefined,
+        inn: inn || undefined,
         message: message || undefined,
         topic,
         is_subscribed: subscribe,
@@ -103,6 +107,8 @@ export default function ContactForm() {
       setName('')
       setPhone('')
       setEmail('')
+      setCompany('')
+      setInn('')
       setMessage('')
     } catch {
       // silent fail
@@ -140,6 +146,8 @@ export default function ContactForm() {
             <FormInput label="Имя" type="text" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setName(e.target.value)} />
             <FormInput label="Телефон" type="tel" value={phone} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPhone(applyPhoneMask(e.target.value))} />
             <FormInput label="Email" type="email" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)} />
+            <FormInput label="Наименование организации" type="text" value={company} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCompany(e.target.value)} />
+            <FormInput label="ИНН" type="text" value={inn} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setInn(e.target.value.replace(/\D/g, '').slice(0, 12))} />
             <FormInput label="Текст сообщения" multiline rows={3} value={message} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setMessage(e.target.value)} />
 
             <div>

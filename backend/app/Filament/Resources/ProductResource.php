@@ -42,6 +42,8 @@ class ProductResource extends Resource
                 Forms\Components\FileUpload::make('image')->label('Основное фото')->image()->disk('public')->directory('products'),
                 Forms\Components\TextInput::make('calculator_hint')->label('Подсказка калькулятора'),
                 Forms\Components\TextInput::make('technical_doc_url')->label('URL тех. документации'),
+                Forms\Components\TextInput::make('sort_order')->label('Порядок в категории')->numeric()->default(0)
+                    ->helperText('Меньше — выше в списке категории. По умолчанию 0.'),
                 Forms\Components\Toggle::make('is_active')->label('Активен')->default(true),
             ])->columns(2),
 
@@ -163,6 +165,7 @@ class ProductResource extends Resource
                 Tables\Columns\ImageColumn::make('image')->label('Фото'),
                 Tables\Columns\TextColumn::make('name')->label('Название')->searchable(),
                 Tables\Columns\TextColumn::make('category.name')->label('Категория')->sortable(),
+                Tables\Columns\TextColumn::make('sort_order')->label('Порядок')->sortable()->toggleable(),
                 Tables\Columns\TextColumn::make('badge')->label('Бейдж')->badge(),
                 Tables\Columns\TextColumn::make('price')->label('Цена')->money('RUB'),
                 Tables\Columns\IconColumn::make('is_active')->label('Активен')->boolean(),

@@ -16,7 +16,7 @@ const DEFAULT_CATEGORIES = [
   { label: 'Шкафы для хранения',          icon: '/images/catalog/icons/shkaf.png' },
   { label: 'Двери противопожарные',       icon: '/images/catalog/icons/dver.png' },
   { label: 'Установки сбора вещества',    icon: '/images/catalog/icons/ustanovki.png' },
-  { label: 'Дымososы для пожарных машин', icon: '/images/catalog/icons/dymosos-mashin.png' },
+  { label: 'Оборудование для пожарных расчётов', icon: '/images/catalog/icons/dymosos-mashin.png' },
 ]
 
 const DEFAULT_SLUG = 'dymososy'
@@ -152,7 +152,7 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
       {/* Заголовок */}
       <SectionHeading
         title="Каталог оборудования"
-        subtitle={<>Отказоустойчивые дымососы,<br />узлы, клапаны и системы</>}
+        subtitle={<>Надёжные дымососы,<br />узлы, клапаны и системы</>}
         align="start"
         mb="mb-8"
         titleClass="text-2xl lg:text-[48px] font-bold text-white leading-tight"

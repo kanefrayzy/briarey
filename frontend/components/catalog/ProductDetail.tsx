@@ -587,7 +587,7 @@ export default function ProductDetail({ product }: Props) {
                 <WalletIcon />
                 <div>
                   <span className="font-semibold text-sm mr-2 text-[#7A563E]">Оплата</span>
-                  <span className="text-xs text-[#B8C0CC]">по счёту / безналичный расчёт / банковский перевод</span>
+                  <span className="text-xs text-[#B8C0CC]">по счёту / безналичный расчёт</span>
                 </div>
               </div>
               <div className="flex-1 flex items-center gap-4 px-6 py-4 lg:px-8">

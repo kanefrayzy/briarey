@@ -27,6 +27,8 @@ class ContactSubmissionResource extends Resource
             Forms\Components\TextInput::make('name')->label('Имя')->disabled(),
             Forms\Components\TextInput::make('phone')->label('Телефон')->disabled(),
             Forms\Components\TextInput::make('email')->label('Email')->disabled(),
+            Forms\Components\TextInput::make('company')->label('Наименование организации')->disabled(),
+            Forms\Components\TextInput::make('inn')->label('ИНН')->disabled(),
             Forms\Components\TextInput::make('topic')->label('Тема')->disabled(),
             Forms\Components\Textarea::make('message')->label('Сообщение')->disabled()->rows(5),
             Forms\Components\Toggle::make('is_subscribed')->label('Подписка на рассылку')->disabled(),
@@ -41,6 +43,8 @@ class ContactSubmissionResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')->label('Дата')->dateTime('d.m.Y H:i')->sortable(),
                 Tables\Columns\TextColumn::make('name')->label('Имя')->searchable(),
                 Tables\Columns\TextColumn::make('phone')->label('Телефон'),
+                Tables\Columns\TextColumn::make('company')->label('Организация')->searchable()->toggleable(),
+                Tables\Columns\TextColumn::make('inn')->label('ИНН')->toggleable(),
                 Tables\Columns\TextColumn::make('topic')->label('Тема'),
                 Tables\Columns\IconColumn::make('is_read')->label('Прочит.')->boolean(),
             ])

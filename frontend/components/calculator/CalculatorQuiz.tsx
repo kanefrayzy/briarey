@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { api, storageUrl, type CalculatorProductResult } from '@/lib/api'
+import { api, storageUrl, type CalculatorProductResult, type CalculatorAccessory } from '@/lib/api'
 import { useCart } from '@/lib/cart'
 import Button from '@/components/Button'
 
@@ -15,7 +15,7 @@ type EI = 'EI60' | 'EI90'
 type DischargeLen = 10 | 20 | 30 | 40 | 50 | 60
 
 interface FormState {
-  volume: string
+  area: string
   speed: Speed | null
   zones: ZoneType | null
   nodeType: NodeType | null
@@ -25,7 +25,7 @@ interface FormState {
 }
 
 const INITIAL: FormState = {
-  volume: '',
+  area: '',
   speed: null,
   zones: null,
   nodeType: null,
@@ -172,23 +172,10 @@ function ProductCard({ product, recommended }: { product: CalculatorProductResul
   )
 }
 
-/* ── Список рукавов/узлов ── */
-function AccessoriesList({
-  zones,
-  nodeType,
-  ei,
-  suction,
-  discharge,
-  rooms,
-}: {
-  zones: ZoneType
-  nodeType: NodeType
-  ei: EI
-  suction: string
-  discharge: DischargeLen
-  rooms: number
-}) {
-  const items = getAccessoriesItems(zones, nodeType, ei, suction, discharge, rooms)
+/* ── Комплектация под расчёт (реальные товары из каталога) ── */
+function AccessoriesList({ items, ei }: { items: CalculatorAccessory[]; ei: EI }) {
+  if (!items.length) return null
+  const total = items.reduce((s, it) => s + it.price * it.qty, 0)
 
   return (
     <div
@@ -197,49 +184,27 @@ function AccessoriesList({
     >
       <h3 className="text-white font-semibold mb-3">Комплектация под расчёт</h3>
       <div className="flex flex-col gap-2">
-        {items.map((item, i) => (
-          <div key={i} className="flex items-start justify-between gap-4 text-sm">
-            <span className="text-white/60">{item.label}</span>
-            <span className="text-white font-medium shrink-0">{item.value}</span>
+        {items.map((it) => (
+          <div key={it.id} className="flex items-start justify-between gap-4 text-sm">
+            <span className="text-white/60">{it.name} × {it.qty}</span>
+            <span className="text-white font-medium shrink-0">
+              {(it.price * it.qty).toLocaleString('ru-RU')} ₽
+            </span>
           </div>
         ))}
       </div>
+      <div
+        className="flex items-center justify-between mt-3 pt-3 text-sm"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
+      >
+        <span className="text-white/60">Доп. оборудование, итого</span>
+        <span className="text-white font-semibold">{total.toLocaleString('ru-RU')} ₽</span>
+      </div>
       <p className="text-white/30 text-xs mt-3">
-        * Точная спецификация уточняется при заказе. Обратитесь к нашим менеджерам.
+        * Предел огнестойкости узлов: {ei}. Точная спецификация уточняется при заказе.
       </p>
     </div>
   )
-}
-
-function getAccessoriesItems(
-  zones: ZoneType,
-  nodeType: NodeType,
-  ei: EI,
-  suction: string,
-  discharge: DischargeLen,
-  rooms: number,
-) {
-  const zoneMult = zones === 'two' ? 2 : 1
-  const nodesCount = rooms * zoneMult
-  const hosesCount = discharge / 10
-  const suctionLabel = zones === 'one'
-    ? (suction === '1.5' ? 'Всасывающий рукав 1,5 м' : 'Всасывающий рукав 5 м (стандарт)')
-    : (suction === '3' ? 'Двухзонная обвязка: нижний 2,5 м + верхний 3 м' : 'Двухзонная обвязка: нижний 2,5 м + верхний 5 м')
-
-  return [
-    {
-      label: `Узлы стыковочные ${nodeType === 'supply_exhaust' ? 'приточно-вытяжные' : 'вытяжные'} (${ei})`,
-      value: `${nodesCount} шт.`,
-    },
-    {
-      label: suctionLabel,
-      value: '1 компл.',
-    },
-    {
-      label: `Рукав напорный РН (10 м × ${hosesCount})`,
-      value: `${hosesCount} шт. = ${discharge} м`,
-    },
-  ]
 }
 
 /* ── Главный компонент ── */
@@ -262,7 +227,7 @@ export default function CalculatorQuiz() {
   const back = () => setStep(s => Math.max(s - 1, 0))
 
   const canNext = () => {
-    if (step === 0) return form.volume !== '' && Number(form.volume) > 0
+    if (step === 0) return form.area !== '' && Number(form.area) > 0
     if (step === 1) return form.speed !== null
     if (step === 2) return form.zones !== null
     if (step === 3) return form.nodeType !== null
@@ -277,9 +242,13 @@ export default function CalculatorQuiz() {
     setError('')
     try {
       const data = await api.getCalculatorRecommend({
-        volume: Number(form.volume),
+        area: Number(form.area),
         speed: form.speed!,
         zones: form.zones === 'two' ? 2 : 1,
+        nodeType: form.nodeType ?? undefined,
+        suction: form.suction ? Number(form.suction) : undefined,
+        discharge: form.discharge ?? undefined,
+        rooms,
       })
       setResult(data)
       setStep(TOTAL_STEPS) // результаты
@@ -303,61 +272,64 @@ export default function CalculatorQuiz() {
     if (!result?.products?.length) return
     const topProduct = result.products[0]
 
-    // Build accessories description for specs
-    let accessoriesSpecs: { key: string; label: string; value: string }[] = []
-    if (form.zones && form.nodeType && form.ei && form.suction && form.discharge) {
-      const items = getAccessoriesItems(form.zones, form.nodeType, form.ei, form.suction, form.discharge, rooms)
-      accessoriesSpecs = items.map(it => ({ key: '', label: it.label, value: it.value }))
-    }
-
-    // Suction length in meters
+    // Suction / exhaust length in meters (для деталей заказа)
     const suctionLength = form.suction ? Number(form.suction) : 5
     const exhaustLength = form.discharge ?? 10
 
+    // 1) Рекомендованный дымосос
     addItem({
       productId: topProduct.id,
       slug: topProduct.slug,
-      name: `${topProduct.name} + комплект под расчёт`,
+      name: topProduct.name,
       image: storageUrl(topProduct.image),
       price: topProduct.price,
       qty: 1,
       extras: [],
-      specs: [
-        ...topProduct.specs.slice(0, 3).map(s => ({ key: s.key ?? '', label: s.label, value: s.value })),
-        ...accessoriesSpecs,
-      ],
+      specs: topProduct.specs.slice(0, 3).map(s => ({ key: s.key ?? '', label: s.label, value: s.value })),
       configuration: {
         suction_length: suctionLength,
         exhaust_length: exhaustLength,
         hoseCost: 0,
       },
     })
+
+    // 2) Комплектация (узлы, доп. рукава, обвязка) — реальными товарами с ценой
+    result.accessories.forEach(acc => {
+      addItem({
+        productId: acc.id,
+        slug: acc.slug,
+        name: acc.name,
+        image: storageUrl(acc.image),
+        price: acc.price,
+        qty: acc.qty,
+        extras: [],
+        specs: [],
+      })
+    })
+
     setAddedToCart(true)
   }
 
   const openContact = (currentResult: typeof result) => {
-    const speedLabel = form.speed === 'fast' ? 'ускоренная (10 мин)' : 'стандартная (1 час)'
+    const speedLabel = form.speed === 'fast' ? 'ускоренная (10 мин)' : 'стандартная (4-кратный обмен)'
     const zonesLabel = form.zones === 'two' ? 'двухзонное' : 'однозонное'
     const nodeLabel  = form.nodeType === 'supply_exhaust' ? 'приточно-вытяжные' : 'вытяжные'
-    const volumeLine = rooms > 1
-      ? `${form.volume} м³ × ${rooms} помещений = ${Number(form.volume) * rooms} м³ общий`
-      : `${form.volume} м³`
+    const areaLine = rooms > 1
+      ? `${form.area} м² × ${rooms} помещений = ${Number(form.area) * rooms} м² общая`
+      : `${form.area} м²`
 
     const topProduct = currentResult?.products?.[0]
     const productLine = topProduct
       ? `  — ${topProduct.name} (${topProduct.productivity.toLocaleString('ru-RU')} м³/ч)`
       : ''
 
-    // Build accessories description
-    let accessoriesLines: string[] = []
-    if (form.zones && form.nodeType && form.ei && form.suction && form.discharge) {
-      const items = getAccessoriesItems(form.zones, form.nodeType, form.ei, form.suction, form.discharge, rooms)
-      accessoriesLines = items.map(it => `  — ${it.label}: ${it.value}`)
-    }
+    // Комплектация из реальных товаров
+    const accessoriesLines = (currentResult?.accessories ?? [])
+      .map(acc => `  — ${acc.name} × ${acc.qty} (${(acc.price * acc.qty).toLocaleString('ru-RU')} ₽)`)
 
     const lines: string[] = [
       'Расчёт дымоудаления:',
-      `• Объём помещения: ${volumeLine}`,
+      `• Площадь помещения: ${areaLine}`,
       `• Скорость удаления: ${speedLabel}`,
       `• Зонирование: ${zonesLabel}`,
       `• Узлы стыковочные: ${nodeLabel}${form.ei ? ` (${form.ei})` : ''}`,
@@ -381,22 +353,22 @@ export default function CalculatorQuiz() {
 
   /* ── Шаги ── */
   const STEPS = [
-    // 0. Объём
-    <div key="volume">
-      <h2 className="text-white text-xl font-bold mb-1">Объём помещения</h2>
-      <p className="text-white/50 text-sm mb-5">Укажите максимальный объём одного помещения, которое нужно защитить</p>
+    // 0. Площадь
+    <div key="area">
+      <h2 className="text-white text-xl font-bold mb-1">Площадь помещения</h2>
+      <p className="text-white/50 text-sm mb-5">Укажите максимальную площадь одного помещения, которое нужно защитить</p>
       <div className="flex items-center gap-3 flex-wrap">
         <input
           type="number"
           min={1}
-          max={5000}
-          placeholder="Напр. 185"
-          value={form.volume}
-          onChange={e => set('volume', e.target.value)}
+          max={10000}
+          placeholder="Напр. 250"
+          value={form.area}
+          onChange={e => set('area', e.target.value)}
           className="rounded-xl px-4 py-3 text-white text-lg font-medium outline-none w-36"
           style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}
         />
-        <span className="text-white/50">м³</span>
+        <span className="text-white/50">м²</span>
         <div className="flex items-center gap-2 ml-4">
           <span className="text-white/50 text-sm">Помещений:</span>
           <button
@@ -578,15 +550,8 @@ export default function CalculatorQuiz() {
           </div>
         )}
 
-        {form.zones && form.nodeType && form.ei && form.suction && form.discharge && (
-          <AccessoriesList
-            zones={form.zones}
-            nodeType={form.nodeType}
-            ei={form.ei}
-            suction={form.suction}
-            discharge={form.discharge}
-            rooms={rooms}
-          />
+        {result.accessories.length > 0 && (
+          <AccessoriesList items={result.accessories} ei={form.ei ?? 'EI60'} />
         )}
 
         <div className="mt-6 flex gap-3 flex-wrap">

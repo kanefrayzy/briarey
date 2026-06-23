@@ -45,7 +45,7 @@ interface AdvantagesSectionProps {
 
 export default function AdvantagesSection({
   title = 'Преимущества компании',
-  subtitle = <>Отказоустойчивые дымососы,<br />узлы, клапаны и системы</>,
+  subtitle = <>Надёжные дымососы,<br />узлы, клапаны и системы</>,
   bgImagePosition = 'top center',
   advantages: apiAdvantages,
 }: AdvantagesSectionProps = {}) {

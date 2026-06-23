@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ContactFormTopic;
 use App\Models\ContactSubmission;
 use App\Models\NewsletterSubscriber;
+use App\Support\Notify;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -23,12 +24,25 @@ class ContactController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:50',
             'email' => 'nullable|email|max:255',
+            'company' => 'nullable|string|max:255',
+            'inn' => 'nullable|string|max:20',
             'message' => 'nullable|string|max:5000',
             'topic' => 'nullable|string|max:255',
             'is_subscribed' => 'boolean',
         ]);
 
-        ContactSubmission::create($validated);
+        $submission = ContactSubmission::create($validated);
+
+        $body = "Новая заявка с сайта\n\n"
+            . "Имя: {$submission->name}\n"
+            . "Телефон: {$submission->phone}\n"
+            . 'Email: ' . ($submission->email ?: '—') . "\n"
+            . 'Организация: ' . ($submission->company ?: '—') . "\n"
+            . 'ИНН: ' . ($submission->inn ?: '—') . "\n"
+            . 'Тема: ' . ($submission->topic ?: '—') . "\n\n"
+            . 'Сообщение:' . "\n" . ($submission->message ?: '—');
+
+        Notify::toSite('Новая заявка: ' . ($submission->topic ?: 'без темы'), $body);
 
         return response()->json(['success' => true], 201);
     }

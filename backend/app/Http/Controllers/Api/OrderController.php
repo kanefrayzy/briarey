@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Product;
+use App\Support\Notify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -88,6 +89,35 @@ class OrderController extends Controller
         foreach ($itemsData as $itemData) {
             $order->items()->create($itemData);
         }
+
+        $lines = [];
+        foreach ($itemsData as $it) {
+            $lines[] = "• {$it['product_name']} × {$it['qty']} — " . number_format($it['price'], 0, '.', ' ') . ' ₽';
+            if (!empty($it['extras'])) {
+                foreach ($it['extras'] as $ex) {
+                    $lines[] = "    + {$ex['name']} × {$ex['qty']}";
+                }
+            }
+            if (!empty($it['configuration'])) {
+                $cfg = $it['configuration'];
+                if (!empty($cfg['suction_length'])) $lines[] = "    рукав всасывающий: {$cfg['suction_length']} м";
+                if (!empty($cfg['exhaust_length'])) $lines[] = "    рукав напорный: {$cfg['exhaust_length']} м";
+            }
+        }
+
+        $deliveryLabel = $order->delivery_method === 'pickup' ? 'Самовывоз' : 'Доставка';
+        $body = "Новый заказ {$order->number}\n\n"
+            . "Имя: {$order->name}\n"
+            . "Телефон: {$order->phone}\n"
+            . 'Email: ' . ($order->email ?: '—') . "\n"
+            . "Способ получения: {$deliveryLabel}\n"
+            . ($order->address ? "Адрес: {$order->address}\n" : '')
+            . ($order->requisites ? "Реквизиты: {$order->requisites}\n" : '')
+            . ($order->comment ? "Комментарий: {$order->comment}\n" : '')
+            . "\nСостав заказа:\n" . implode("\n", $lines)
+            . "\n\nИтого: " . number_format($total, 0, '.', ' ') . ' ₽';
+
+        Notify::toSite("Новый заказ {$order->number}", $body);
 
         return response()->json([
             'success'      => true,

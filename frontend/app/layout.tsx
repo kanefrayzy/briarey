@@ -74,7 +74,12 @@ const organizationJsonLd = {
   ],
   telephone: ['+7 (499) 713-70-79', '+7 (901) 183-70-79'],
   email: 'info@briarey.ru',
-  sameAs: [],
+  sameAs: [
+    'https://vk.com/briareyru',
+    'https://t.me/briareyru',
+    'https://rutube.ru/channel/25900927/',
+    'https://www.youtube.com/channel/UCyNOFGyNTMnA4zE-NnOI3_w',
+  ],
 }
 
 export default function RootLayout({

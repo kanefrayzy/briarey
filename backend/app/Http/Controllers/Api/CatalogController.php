@@ -28,6 +28,8 @@ class CatalogController extends Controller
         $products = $category->products()
             ->where('is_active', true)
             ->with(['attributeValues.categoryAttribute'])
+            ->orderBy('sort_order')
+            ->orderBy('id')
             ->get();
 
         return response()->json([

@@ -4,12 +4,29 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import Button from './Button'
-import FacebookIcon from './icons/FacebookIcon'
+import VKIcon from './icons/VKIcon'
+import TelegramIcon from './icons/TelegramIcon'
+import RuTubeIcon from './icons/RuTubeIcon'
 import YouTubeIcon from './icons/YouTubeIcon'
-import InstagramIcon from './icons/InstagramIcon'
-import TwitterIcon from './icons/TwitterIcon'
 import type { SiteSettings } from '@/lib/api'
 import { api } from '@/lib/api'
+
+const socialLinks = [
+  { href: 'https://vk.com/briareyru', label: 'ВКонтакте', Icon: VKIcon },
+  { href: 'https://t.me/briareyru', label: 'Telegram', Icon: TelegramIcon },
+  { href: 'https://rutube.ru/channel/25900927/', label: 'RuTube', Icon: RuTubeIcon },
+  { href: 'https://www.youtube.com/channel/UCyNOFGyNTMnA4zE-NnOI3_w', label: 'YouTube', Icon: YouTubeIcon },
+]
+
+function SocialLinks() {
+  return (
+    <>
+      {socialLinks.map(({ href, label, Icon }) => (
+        <SocialLink key={label} href={href} label={label}><Icon /></SocialLink>
+      ))}
+    </>
+  )
+}
 
 const navColumns = [
   {
@@ -32,6 +49,7 @@ const navColumns = [
       'Шкаф хранения',
       'Двери противопожарные',
       'Установки сбора вещества',
+      'Оборудование для пожарных расчётов',
     ],
     hrefs: [
       '/catalog/dymososy',
@@ -41,6 +59,7 @@ const navColumns = [
       '/catalog/shkafy-dlya-hraneniya',
       '/catalog/dveri-protivopozharnye',
       '/catalog/ustanovki-sbora-veshchestva',
+      '/catalog/dymososy-dlya-pozharnyh-mashin',
     ],
   },
   {
@@ -115,10 +134,7 @@ export default function Footer({ settings: settingsProp }: FooterProps) {
             <Image src="/images/logo.svg" alt="Бриарей" width={140} height={42} className="h-12 w-auto" />
           </Link>
           <div className="flex gap-3">
-            <SocialLink href="#" label="Facebook"><FacebookIcon /></SocialLink>
-            <SocialLink href="#" label="YouTube"><YouTubeIcon /></SocialLink>
-            <SocialLink href="#" label="Instagram"><InstagramIcon /></SocialLink>
-            <SocialLink href="#" label="Twitter"><TwitterIcon /></SocialLink>
+            <SocialLinks />
           </div>
         </div>
 
@@ -238,10 +254,7 @@ export default function Footer({ settings: settingsProp }: FooterProps) {
                 </nav>
                 {colIdx === 0 && (
                   <div className="flex gap-3 mt-3">
-                    <SocialLink href="#" label="Facebook"><FacebookIcon /></SocialLink>
-                    <SocialLink href="#" label="YouTube"><YouTubeIcon /></SocialLink>
-                    <SocialLink href="#" label="Instagram"><InstagramIcon /></SocialLink>
-                    <SocialLink href="#" label="Twitter"><TwitterIcon /></SocialLink>
+                    <SocialLinks />
                   </div>
                 )}
               </div>
