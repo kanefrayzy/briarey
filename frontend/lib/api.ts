@@ -1,7 +1,9 @@
 const API_BASE =
   typeof window === 'undefined'
     ? (process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost/api')
-    : (process.env.NEXT_PUBLIC_API_URL || '/api');
+    // В браузере всегда ходим на тот же origin — сайт работает на любом домене
+    // и не зависит от вшитого при сборке NEXT_PUBLIC_API_URL.
+    : '/api';
 
 export function storageUrl(path: string | null | undefined): string {
   if (!path) return '/images/placeholder.png';
