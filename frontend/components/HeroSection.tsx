@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Button from './Button'
 import SmokeOverlay from './SmokeOverlay'
@@ -8,6 +8,64 @@ import { type HeroSection as HeroData } from '@/lib/api'
 
 interface HeroSectionProps {
   data?: HeroData
+}
+
+/**
+ * Видео дыма с отложенной загрузкой: до полной загрузки страницы показывается
+ * лёгкий постер (webp), а тяжёлое видео (~11 МБ) начинает скачиваться только
+ * после события load (или через 4 с — страховка), не блокируя первую отрисовку.
+ */
+function DeferredSmokeVideo({ className, style }: { className?: string; style?: React.CSSProperties }) {
+  const [ready, setReady] = useState(false)
+  const ref = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null
+    const start = () => setReady(true)
+
+    if (document.readyState === 'complete') {
+      start()
+    } else {
+      window.addEventListener('load', start, { once: true })
+      timer = setTimeout(start, 4000) // страховка, если load задерживается
+    }
+
+    return () => {
+      window.removeEventListener('load', start)
+      if (timer) clearTimeout(timer)
+    }
+  }, [])
+
+  // После появления <source> нужно явно перечитать и запустить видео
+  useEffect(() => {
+    if (ready && ref.current) {
+      ref.current.load()
+      ref.current.play().catch(() => {})
+    }
+  }, [ready])
+
+  return (
+    <video
+      ref={ref}
+      autoPlay
+      loop
+      muted
+      playsInline
+      poster="/images/dymka-poster.webp"
+      aria-hidden="true"
+      className={className}
+      style={style}
+    >
+      {ready && (
+        <>
+          {/* Safari (iOS/macOS) — ProRes 4444 с альфа-каналом */}
+          <source src="/images/dymka.mov" type="video/quicktime" />
+          {/* Chrome, Firefox и остальные */}
+          <source src="/images/dymka.webm" type="video/webm" />
+        </>
+      )}
+    </video>
+  )
 }
 
 export default function HeroSection({ data }: HeroSectionProps) {
@@ -39,27 +97,16 @@ export default function HeroSection({ data }: HeroSectionProps) {
         style={{
           minHeight: '380px',
           marginTop: '-64px',
-          backgroundImage: 'url(/images/fon.png)',
+          backgroundImage: 'url(/images/fon.webp)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       >
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/images/dymka.png"
-            aria-hidden="true"
+          <DeferredSmokeVideo
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: '-240px top' }}
-          >
-            {/* Safari (iOS/macOS) — ProRes 4444 с альфа-каналом */}
-            <source src="/images/dymka.mov" type="video/quicktime" />
-            {/* Chrome, Firefox и остальные */}
-            <source src="/images/dymka.webm" type="video/webm" />
-          </video>
+          />
         </div>
 
         <SmokeOverlay position="bottom" zIndex={2} height="30%" />
@@ -84,7 +131,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
           minHeight: '580px',
           marginTop: '-96px',
           paddingTop: '96px',
-          backgroundImage: 'url(/images/fon.png)',
+          backgroundImage: 'url(/images/fon.webp)',
           backgroundSize: 'cover',
           backgroundPosition: `center ${s * 0.05}px`,
         }}
@@ -108,20 +155,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
             transform: `translateY(${s * 0.08}px)`,
           }}
         >
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            poster="/images/dymka.png"
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          >
-            {/* Safari (iOS/macOS) — ProRes 4444 с альфа-каналом */}
-            <source src="/images/dymka.mov" type="video/quicktime" />
-            {/* Chrome, Firefox и остальные */}
-            <source src="/images/dymka.webm" type="video/webm" />
-          </video>
+          <DeferredSmokeVideo className="absolute inset-0 w-full h-full object-cover object-center" />
         </div>
 
         {/* ── Перекрывашка ── */}

@@ -60,7 +60,7 @@ export default function AdvantagesSection({
       {/* Фоновая картинка только на десктопе */}
       <div
         className="hidden md:block absolute inset-0 pointer-events-none"
-        style={{ background: `url('/images/hero-catalog.png') ${bgImagePosition} no-repeat`, backgroundSize: 'contain' }}
+        style={{ background: `url('/images/hero-catalog.webp') ${bgImagePosition} no-repeat`, backgroundSize: 'contain' }}
       />
 
       <div className="relative max-w-[1440px] mx-auto px-4 lg:px-14 py-10 lg:py-24">

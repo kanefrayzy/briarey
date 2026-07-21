@@ -19,6 +19,18 @@ const nextConfig = {
       },
     ]
   },
+  async headers() {
+    return [
+      {
+        // Статичные медиа (видео, фоны, слайды) — кеш на 7 дней вместо max-age=0,
+        // чтобы повторные визиты не перекачивали тяжёлые файлы
+        source: '/images/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

@@ -142,7 +142,7 @@ export default function CatalogGrid({ apiCategories, initialCategorySlug, initia
     <section
       id="catalog-page-grid"
       style={{
-        background: "url('/images/hero-catalog.png') top center no-repeat #242424",
+        background: "url('/images/hero-catalog.webp') top center no-repeat #242424",
         backgroundSize: 'contain',
         maxWidth: 1440,
         margin: '0 auto',

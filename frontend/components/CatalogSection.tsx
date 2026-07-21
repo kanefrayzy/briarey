@@ -195,7 +195,7 @@ export default function CatalogSection({ noBgImage = false, showButton = true, a
     <section
       id="catalog"
       style={{
-        background: noBgImage ? '#242424' : "url('/images/hero-catalog.png') top center no-repeat #242424",
+        background: noBgImage ? '#242424' : "url('/images/hero-catalog.webp') top center no-repeat #242424",
         backgroundSize: 'contain',
         maxWidth: 1440,
         margin: '0 auto',
