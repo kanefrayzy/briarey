@@ -117,7 +117,7 @@ class OrderController extends Controller
             . "\nСостав заказа:\n" . implode("\n", $lines)
             . "\n\nИтого: " . number_format($total, 0, '.', ' ') . ' ₽';
 
-        Notify::toSite("Новый заказ {$order->number}", $body);
+        Notify::toSite("Новый заказ {$order->number}", $body, $request->getHost());
 
         return response()->json([
             'success'      => true,

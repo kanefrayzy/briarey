@@ -42,7 +42,7 @@ class ContactController extends Controller
             . 'Тема: ' . ($submission->topic ?: '—') . "\n\n"
             . 'Сообщение:' . "\n" . ($submission->message ?: '—');
 
-        Notify::toSite('Новая заявка: ' . ($submission->topic ?: 'без темы'), $body);
+        Notify::toSite('Новая заявка: ' . ($submission->topic ?: 'без темы'), $body, $request->getHost());
 
         return response()->json(['success' => true], 201);
     }
