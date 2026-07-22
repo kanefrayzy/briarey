@@ -412,22 +412,24 @@ export const api = {
 
   // Calculator
   getCalculatorRecommend: (params: {
-    area: number
-    speed: 'fast' | 'standard'
+    volume: number
+    rooms: number
     zones: number
-    nodeType?: 'exhaust' | 'supply_exhaust'
-    suction?: number
-    discharge?: number
-    rooms?: number
+    nodeType: 'exhaust' | 'supply_exhaust'
+    montage: 'internal' | 'external'
+    suction: string
+    distance: number
+    discharge: 'street' | 'vent' | 'shaft'
   }) => {
     const q = new URLSearchParams({
-      area: String(params.area),
-      speed: params.speed,
+      volume: String(params.volume),
+      rooms: String(params.rooms),
       zones: String(params.zones),
-      node_type: params.nodeType ?? 'exhaust',
-      suction: String(params.suction ?? 5),
-      discharge: String(params.discharge ?? 10),
-      rooms: String(params.rooms ?? 1),
+      node_type: params.nodeType,
+      montage: params.montage,
+      suction: params.suction,
+      distance: String(params.distance),
+      discharge: params.discharge,
     })
     return fetchApi<CalculatorResult>(`/calculator/recommend?${q.toString()}`)
   },
@@ -463,7 +465,6 @@ export interface CalculatorProductResult {
   name: string
   price: number
   image: string | null
-  productivity: number
   specs: { key: string | null; label: string; value: string; unit: string | null }[]
 }
 
@@ -478,9 +479,11 @@ export interface CalculatorAccessory {
 
 export interface CalculatorResult {
   required_productivity: number
-  area: number
-  speed: 'fast' | 'standard'
-  zones: number
-  products: CalculatorProductResult[]
+  volume: number
+  consultation_required: boolean
+  non_standard: boolean
+  product: CalculatorProductResult | null
   accessories: CalculatorAccessory[]
+  accessories_total: number
+  total: number
 }

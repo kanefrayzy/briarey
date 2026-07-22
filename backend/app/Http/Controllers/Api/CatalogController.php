@@ -65,7 +65,8 @@ class CatalogController extends Controller
             $query->whereHas('category', fn ($q) => $q->where('slug', $slug));
         }
 
-        $products = $query->orderBy('name')->limit(12)->get();
+        // limit(12) прятал часть каталога (категория дымососов больше 12 позиций)
+        $products = $query->orderBy('sort_order')->orderBy('name')->limit(100)->get();
 
         return response()->json($products);
     }
