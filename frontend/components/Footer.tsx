@@ -231,9 +231,13 @@ export default function Footer({ settings: settingsProp }: FooterProps) {
                 <span>Офис: Молодёжная улица, 26В, Раменское, Московская область</span>
               </a>
             </div>
-            <Link href="/certificates" className="text-white/70 text-base underline hover:text-white transition-colors">
+            <a
+              href="/docs/rekvizity-briarey.pdf"
+              download="Реквизиты ООО БРИАРЕЙ.pdf"
+              className="text-white/70 text-base underline hover:text-white transition-colors"
+            >
               Скачать реквизиты
-            </Link>
+            </a>
             <p className="text-white/30 text-xs">
               График работы:<br />
               {workHours}
