@@ -21,7 +21,7 @@ const SLIDES = [
     icon: GearIcon,
     statTitle: 'Собственное производство\n(95% ассортимента)',
     statDesc: 'Гарантированные сроки,\nстабильные поставки.',
-    nextFeature: 'Высокая\nотказоустойчивость\nоборудования',
+    nextFeature: 'Высокая\nнадёжность\nоборудования',
     buttonLabel: "О компании",
     buttonHref: '/about',
     buttonVariant: 'catalog' as const,
