@@ -113,6 +113,17 @@ function CheckIcon({ checked }: { checked: boolean }) {
 }
 
 /** Parse meter value from starter kit qty string like "5м" or "10м" */
+/* Переход к форме обратной связи с предзаполненным сообщением о товаре */
+function openConsultation(productName: string) {
+  try {
+    sessionStorage.setItem('contactFormPrefill', JSON.stringify({
+      topic: 'Технический вопрос',
+      message: `Здравствуйте! Нужна консультация по товару: ${productName}`,
+    }))
+  } catch { /* sessionStorage недоступен — просто переходим к форме */ }
+  window.location.href = '/#contact-form'
+}
+
 function parseMeters(qty: string): number {
   const m = qty.match(/(\d+)\s*м/i)
   return m ? parseInt(m[1], 10) : 0
@@ -274,7 +285,10 @@ function KitConstructor({ product, selectedExtras, toggleExtra, formatPrice, onA
             <Button variant="calculator" className="!justify-center sm:!px-10" onClick={() => onAddToCart({ suction_length: suction, exhaust_length: exhaust, hoseCost })}>
               В корзину
             </Button>
-            <button className="flex items-center justify-center px-8 py-3 text-sm font-semibold text-white rounded transition-opacity hover:opacity-80 border border-[#7a563e]">
+            <button
+              onClick={() => openConsultation(product.name)}
+              className="flex items-center justify-center px-8 py-3 text-sm font-semibold text-white rounded transition-opacity hover:opacity-80 border border-[#7a563e]"
+            >
               Консультация
             </button>
           </div>
@@ -352,7 +366,10 @@ function ExtraEquipment({ product, selectedExtras, toggleExtra, formatPrice, onA
             <Button variant="calculator" className="!justify-center sm:!px-10" onClick={onAddToCart}>
               В корзину
             </Button>
-            <button className="flex items-center justify-center px-8 py-3 text-sm font-semibold text-white rounded transition-opacity hover:opacity-80 border border-[#7a563e]">
+            <button
+              onClick={() => openConsultation(product.name)}
+              className="flex items-center justify-center px-8 py-3 text-sm font-semibold text-white rounded transition-opacity hover:opacity-80 border border-[#7a563e]"
+            >
               Консультация
             </button>
           </div>
