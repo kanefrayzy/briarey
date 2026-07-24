@@ -414,6 +414,7 @@ export const api = {
   getCalculatorRecommend: (params: {
     volume: number
     rooms: number
+    speed: 'fast' | 'snip'
     zones: number
     nodeType: 'exhaust' | 'supply_exhaust'
     montage: 'internal' | 'external'
@@ -424,6 +425,7 @@ export const api = {
     const q = new URLSearchParams({
       volume: String(params.volume),
       rooms: String(params.rooms),
+      speed: params.speed,
       zones: String(params.zones),
       node_type: params.nodeType,
       montage: params.montage,

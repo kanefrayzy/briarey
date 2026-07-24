@@ -14,6 +14,7 @@ class CalculatorController extends Controller
      * GET /api/calculator/recommend
      *   volume     — максимальный объём защищаемого помещения, м³
      *   rooms      — количество защищаемых помещений (1..999)
+     *   speed      — fast (ускоренная продувка за 10–15 мин) | snip (строгий 4-кратный обмен, СНиП)
      *   zones      — 1 (однозонное) | 2 (двухзонное удаление)
      *   node_type  — exhaust (вытяжной) | supply_exhaust (приточно-вытяжной)
      *   montage    — internal (внутренняя перегородка) | external (уличная стена)
@@ -22,21 +23,23 @@ class CalculatorController extends Controller
      *   discharge  — street (улица) | vent (вытяжная вентиляция) | shaft (шахта дымоудаления)
      *
      * Логика:
-     *  - дымосос по таблице объёмов (до 100/200/300/400/500 м³), свыше 500 — консультация;
-     *  - требуемая производительность (справочно) = объём × 4 (строгий 4-кратный обмен);
+     *  - дымосос по таблице объёмов; границы зависят от режима (две колонки таблицы Бриарея):
+     *    fast — до 100/200/300/400/500 м³, snip — до 375/500/875/1000/1250 м³;
+     *    свыше последней границы — консультация с производителем;
+     *  - требуемая производительность (справочно): snip = объём × 4, fast = объём × 6;
      *  - при паре Ц/ЦМ берём более дешёвый в розницу;
      *  - узлы = помещения × зоны, адаптеры = зоны (на один дымосос),
      *    двухзонная обвязка — 1 шт; в зачёт расстояния идёт всасывающая часть
      *    (рукав 1,5/5 м или нижний рукав обвязки 2,5 м) + напорный 10 м из комплекта.
      */
 
-    /** Таблица подбора: верхняя граница объёма → slug-кандидаты (Ц/ЦМ). */
+    /** Таблица подбора: границы объёма по режимам → slug-кандидаты (Ц/ЦМ). */
     private const VOLUME_TABLE = [
-        [100, ['dymosos-dpje-7-1c', 'dymosos-dpje-7-1cm']],
-        [200, ['dymosos-dpje-7-2c', 'dymosos-dpje-7-2cm-dpje-a-k-20-2000']],
-        [300, ['dymosos-dpje-7-4c', 'dymosos-dpje-7-4cm']],
-        [400, ['dymosos-dpje-a-p-315-4000']],
-        [500, ['dymosos-dpje-a-p-315-5000']],
+        ['fast' => 100, 'snip' => 375,  'slugs' => ['dymosos-dpje-7-1c', 'dymosos-dpje-7-1cm']],
+        ['fast' => 200, 'snip' => 500,  'slugs' => ['dymosos-dpje-7-2c', 'dymosos-dpje-7-2cm-dpje-a-k-20-2000']],
+        ['fast' => 300, 'snip' => 875,  'slugs' => ['dymosos-dpje-7-4c', 'dymosos-dpje-7-4cm']],
+        ['fast' => 400, 'snip' => 1000, 'slugs' => ['dymosos-dpje-a-p-315-4000']],
+        ['fast' => 500, 'snip' => 1250, 'slugs' => ['dymosos-dpje-a-p-315-5000']],
     ];
 
     private const NODE_SLUGS = [
@@ -65,6 +68,7 @@ class CalculatorController extends Controller
     {
         $volume    = (float) $request->input('volume', 0);
         $rooms     = min(999, max(1, (int) $request->input('rooms', 1)));
+        $speed     = $request->input('speed') === 'snip' ? 'snip' : 'fast';
         $zones     = (int) $request->input('zones', 1) === 2 ? 2 : 1;
         $nodeType  = $request->input('node_type') === 'supply_exhaust' ? 'supply_exhaust' : 'exhaust';
         $montage   = $request->input('montage') === 'external' ? 'external' : 'internal';
@@ -78,10 +82,12 @@ class CalculatorController extends Controller
             return response()->json(['error' => 'Некорректный объём помещения.'], 422);
         }
 
-        $required = (int) ceil($volume * 4);
+        // Справочная производительность: СНиП — 4 обмена в час, продувка за 10 мин — 6
+        $required = (int) ceil($volume * ($speed === 'snip' ? 4 : 6));
 
-        // Свыше 500 м³ — только консультация с производителем
-        if ($volume > 500) {
+        // Свыше последней границы режима — только консультация с производителем
+        $maxLimit = end(self::VOLUME_TABLE)[$speed];
+        if ($volume > $maxLimit) {
             return response()->json([
                 'required_productivity' => $required,
                 'volume'                => $volume,
@@ -94,11 +100,11 @@ class CalculatorController extends Controller
             ]);
         }
 
-        // Дымосос по таблице; при паре Ц/ЦМ — более дешёвый в рознице
+        // Дымосос по таблице выбранного режима; при паре Ц/ЦМ — более дешёвый в рознице
         $slugs = null;
-        foreach (self::VOLUME_TABLE as [$limit, $group]) {
-            if ($volume <= $limit) {
-                $slugs = $group;
+        foreach (self::VOLUME_TABLE as $row) {
+            if ($volume <= $row[$speed]) {
+                $slugs = $row['slugs'];
                 break;
             }
         }

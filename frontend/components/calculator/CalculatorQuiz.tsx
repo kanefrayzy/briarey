@@ -8,6 +8,7 @@ import { useCart } from '@/lib/cart'
 import Button from '@/components/Button'
 
 /* ── Типы шагов ── */
+type Speed = 'fast' | 'snip'
 type ZoneType = 'one' | 'two'
 type NodeType = 'exhaust' | 'supply_exhaust'
 type Montage = 'internal' | 'external'
@@ -16,6 +17,7 @@ type Discharge = 'street' | 'vent' | 'shaft'
 
 interface FormState {
   volume: string
+  speed: Speed | null
   zones: ZoneType | null
   nodeType: NodeType | null
   montage: Montage | null
@@ -27,6 +29,7 @@ interface FormState {
 
 const INITIAL: FormState = {
   volume: '',
+  speed: null,
   zones: null,
   nodeType: null,
   montage: null,
@@ -205,7 +208,7 @@ function QuoteModal({
 }
 
 /* ── Главный компонент ── */
-const TOTAL_STEPS = 8
+const TOTAL_STEPS = 9
 
 export default function CalculatorQuiz() {
   const [step, setStep] = useState(0)
@@ -226,13 +229,14 @@ export default function CalculatorQuiz() {
 
   const canNext = () => {
     if (step === 0) return form.volume !== '' && Number(form.volume) > 0
-    if (step === 1) return form.zones !== null
-    if (step === 2) return form.nodeType !== null
-    if (step === 3) return form.montage !== null
-    if (step === 4) return form.ei !== null
-    if (step === 5) return form.suction !== ''
-    if (step === 6) return form.distance !== '' && Number(form.distance) > 0
-    if (step === 7) return form.discharge !== null
+    if (step === 1) return form.speed !== null
+    if (step === 2) return form.zones !== null
+    if (step === 3) return form.nodeType !== null
+    if (step === 4) return form.montage !== null
+    if (step === 5) return form.ei !== null
+    if (step === 6) return form.suction !== ''
+    if (step === 7) return form.distance !== '' && Number(form.distance) > 0
+    if (step === 8) return form.discharge !== null
     return true
   }
 
@@ -243,6 +247,7 @@ export default function CalculatorQuiz() {
       const data = await api.getCalculatorRecommend({
         volume: Number(form.volume),
         rooms,
+        speed: form.speed ?? 'fast',
         zones: form.zones === 'two' ? 2 : 1,
         nodeType: form.nodeType ?? 'exhaust',
         montage: form.montage ?? 'internal',
@@ -318,9 +323,14 @@ export default function CalculatorQuiz() {
       ? (form.suction === 'custom' ? 'двухзонная обвязка, верхний рукав более 3 м (нестандарт)' : 'двухзонная обвязка, верхний 3 м')
       : `всасывающий рукав ${form.suction === '1.5' ? '1,5' : form.suction} м`
 
+    const speedLabel = form.speed === 'snip'
+      ? 'строгий четырёхкратный обмен (СНиП)'
+      : 'ускоренная продувка (10–15 минут)'
+
     const lines: string[] = [
       'Расчёт комплекта дымоудаления:',
       `• Объём помещения: ${form.volume} м³${rooms > 1 ? ` (помещений: ${rooms})` : ''}`,
+      `• Скорость удаления: ${speedLabel}`,
       `• Тип удаления: ${zonesLabel}`,
       `• Узлы стыковочные: ${nodeLabel}${form.ei ? ` (${form.ei})` : ''}, монтаж: ${montageLabel}`,
       `• Всасывающая линия: ${suctionLabel}`,
@@ -390,7 +400,27 @@ export default function CalculatorQuiz() {
       </div>
     </div>,
 
-    // 1. Зоны
+    // 1. Скорость удаления
+    <div key="speed">
+      <h2 className="text-white text-xl font-bold mb-1">Скорость удаления</h2>
+      <p className="text-white/50 text-sm mb-5">Как быстро нужно удалить дым и газ из помещения?</p>
+      <div className="flex flex-wrap gap-3">
+        <OptionCard
+          selected={form.speed === 'fast'}
+          onClick={() => set('speed', 'fast')}
+          label="Ускоренная продувка"
+          hint="Полное удаление за 10–15 минут"
+        />
+        <OptionCard
+          selected={form.speed === 'snip'}
+          onClick={() => set('speed', 'snip')}
+          label="Четырёхкратный обмен (СНиП)"
+          hint="Строгий 4-кратный воздухообмен в час"
+        />
+      </div>
+    </div>,
+
+    // 2. Зоны
     <div key="zones">
       <h2 className="text-white text-xl font-bold mb-1">Тип удаления</h2>
       <p className="text-white/50 text-sm mb-5">Сколько зон дымоудаления в помещении?</p>
@@ -575,8 +605,8 @@ export default function CalculatorQuiz() {
             style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.10)' }}
           >
             <p className="text-white/70 leading-relaxed">
-              При подборе дымососа для помещений объёмом от 500 м³ и выше необходимо учитывать
-              индивидуальные особенности помещения. В таких случаях без консультации
+              Для помещений такого объёма при подборе дымососа необходимо учитывать
+              индивидуальные особенности объекта. В таких случаях без консультации
               с производителем не обойтись — отправьте расчёт на просчёт, и менеджер
               подберёт решение под ваш объект.
             </p>
