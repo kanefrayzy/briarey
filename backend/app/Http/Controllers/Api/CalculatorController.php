@@ -86,7 +86,8 @@ class CalculatorController extends Controller
         $required = (int) ceil($volume * ($speed === 'snip' ? 4 : 6));
 
         // Свыше последней границы режима — только консультация с производителем
-        $maxLimit = end(self::VOLUME_TABLE)[$speed];
+        $volumeTable = self::VOLUME_TABLE;
+        $maxLimit = $volumeTable[array_key_last($volumeTable)][$speed];
         if ($volume > $maxLimit) {
             return response()->json([
                 'required_productivity' => $required,
