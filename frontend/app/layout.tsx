@@ -46,6 +46,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    yandex: 'd4dc241cd7050abe',
+  },
 }
 
 const organizationJsonLd = {
