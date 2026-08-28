@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import { CartProvider } from '@/lib/cart'
+import CookieConsent from '@/components/CookieConsent'
 import './globals.css'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://briarey.ru'
@@ -107,6 +108,7 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
           />
           {children}
+          <CookieConsent />
         </CartProvider>
       </body>
     </html>
