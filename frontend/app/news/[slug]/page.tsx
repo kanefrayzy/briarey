@@ -119,9 +119,18 @@ export default async function NewsDetailsPage({ params }: Props) {
                     </div>
                   )}
 
-                  {block.text && (
-                    <div className="text lg:flex-1 text-brand-gray text-sm md:text-lg md:leading-loose leading-relaxed whitespace-pre-line">
-                      {block.text}
+                  {(block.title || block.text) && (
+                    <div className="text lg:flex-1 flex flex-col gap-3 lg:gap-4">
+                      {block.title && (
+                        <h2 className="text-white font-bold text-xl md:text-2xl lg:text-3xl leading-snug">
+                          {block.title}
+                        </h2>
+                      )}
+                      {block.text && (
+                        <div className="text-brand-gray text-sm md:text-lg md:leading-loose leading-relaxed whitespace-pre-line">
+                          {block.text}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
