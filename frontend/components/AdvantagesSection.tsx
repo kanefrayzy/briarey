@@ -15,8 +15,8 @@ const DEFAULT_ICONS = [
 
 const defaultAdvantages = [
   {
-    title: 'Быстрая отгрузка 1–3 дня',
-    desc: 'Оперативная комплектация и отправка оборудования со склада. Сокращение сроков реализации проекта и простоев на объекте.',
+    title: 'Отгрузка базовых позиций 1–3 дня',
+    desc: 'Основные позиции поддерживаем в наличии. Для базового оборудования — оперативная комплектация и отгрузка в течение 1–3 рабочих дней после оплаты счёта.',
     icon: <AdvantagesArrowIcon />,
   },
   {
@@ -25,33 +25,53 @@ const defaultAdvantages = [
     icon: <AdvantagesShieldIcon />,
   },
   {
-    title: 'Поддержка проектировщиков (Revit/AutoCAD)',
-    desc: 'Предоставляем модели, схемы и технические данные для включения в проект. Упрощаем работу проектных организаций и ускоряем согласование.',
+    title: 'Документация для проектировщиков',
+    desc: 'Предоставляем технические материалы, BIM-модели и блоки AutoCAD для включения оборудования в проект.',
     icon: <AdvantagesCpuIcon />,
   },
   {
-    title: 'Инженерная консультация / нестандартные решения',
-    desc: 'Помогаем подобрать оборудование под конкретный объект и требования СП. Разбираем нестандартные ситуации и даём практические рекомендации.',
+    title: 'Консультация по подбору оборудования',
+    desc: 'Помогаем дистанционно подобрать оборудование под параметры объекта. Для предварительного расчёта доступен онлайн-калькулятор, для нестандартных задач — консультация специалиста.',
     icon: <AdvantagesCircleIcon />,
   },
 ]
 
+export interface AdvantageItem {
+  title: string
+  desc: string
+  icon?: ReactNode
+  /** Кнопки под текстом карточки (например, «Рассчитать оборудование») */
+  actions?: ReactNode
+}
+
 interface AdvantagesSectionProps {
   title?: string
   subtitle?: ReactNode | null
+  /** Строка над заголовком — например, «15 лет производим оборудование…» */
+  eyebrow?: ReactNode
   bgImagePosition?: string
   advantages?: Advantage[]
+  /** Явный список карточек (страницы «Дилерам» и «Вакансии») */
+  items?: AdvantageItem[]
+  /** Свой набор иконок для явного списка */
+  icons?: ReactNode[]
 }
 
 export default function AdvantagesSection({
   title = 'Преимущества компании',
   subtitle = <>Надёжные дымососы,<br />узлы, клапаны и системы</>,
+  eyebrow,
   bgImagePosition = 'top center',
   advantages: apiAdvantages,
+  items: explicitItems,
+  icons,
 }: AdvantagesSectionProps = {}) {
-  const items = apiAdvantages?.length
-    ? apiAdvantages.map((a, i) => ({ title: a.title, desc: a.description, icon: DEFAULT_ICONS[i % DEFAULT_ICONS.length] }))
-    : defaultAdvantages
+  const iconSet = icons?.length ? icons : DEFAULT_ICONS
+  const items: AdvantageItem[] = explicitItems?.length
+    ? explicitItems.map((item, i) => ({ ...item, icon: item.icon ?? iconSet[i % iconSet.length] }))
+    : apiAdvantages?.length
+      ? apiAdvantages.map((a, i) => ({ title: a.title, desc: a.description, icon: iconSet[i % iconSet.length] }))
+      : defaultAdvantages
   return (
     <section
       className="relative bg-[#242424]"
@@ -64,6 +84,13 @@ export default function AdvantagesSection({
       />
 
       <div className="relative max-w-[1440px] mx-auto px-4 lg:px-14 py-10 lg:py-24">
+
+        {/* Надзаголовок */}
+        {eyebrow && (
+          <p className="text-white/50 text-sm md:text-base leading-relaxed mb-3 lg:mb-4 max-w-2xl">
+            {eyebrow}
+          </p>
+        )}
 
         {/* Заголовок */}
         <SectionHeading
@@ -91,6 +118,7 @@ export default function AdvantagesSection({
               <div className="flex flex-col gap-1.5 md:gap-3">
                 <h3 className="text-white font-medium lg:font-bold text-base md:text-xl leading-snug md:leading-relaxed">{adv.title}</h3>
                 <p className="text-white/50 text-[12px] md:text-[18px] leading-relaxed md:leading-loose">{adv.desc}</p>
+                {adv.actions && <div className="flex flex-col gap-2 mt-1 md:mt-2">{adv.actions}</div>}
               </div>
             </div>
           ))}

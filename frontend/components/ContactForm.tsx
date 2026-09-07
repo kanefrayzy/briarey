@@ -23,15 +23,43 @@ function applyPhoneMask(raw: string): string {
 }
 
 const DEFAULT_TOPICS = [
-  'Стать диллером',
+  'Дилерское сотрудничество',
   'Технический вопрос',
   'Коммерческое предложение',
   'Другое',
 ]
 
-export default function ContactForm() {
+interface ContactFormProps {
+  /** Заголовок формы */
+  title?: string
+  /** Пояснение под заголовком */
+  description?: string
+  /** Подпись поля сообщения */
+  messageLabel?: string
+  /** Подсказка под полем сообщения */
+  messageHint?: string
+  /** Текст основной кнопки */
+  submitLabel?: string
+  /** Показывать поле ИНН */
+  showInn?: boolean
+  /** Жёстко заданная тема обращения — селект темы тогда не показываем */
+  lockedTopic?: string
+  /** Приписка под кнопкой */
+  note?: string
+}
+
+export default function ContactForm({
+  title = 'Заявка',
+  description = 'Тут можно оставить заявку, для того чтобы наши менеджера связались с вами в удобное время',
+  messageLabel = 'Текст сообщения',
+  messageHint,
+  submitLabel = 'Отправить',
+  showInn = true,
+  lockedTopic,
+  note,
+}: ContactFormProps = {}) {
   const [topics, setTopics] = useState<string[]>(DEFAULT_TOPICS)
-  const [topic, setTopic] = useState(DEFAULT_TOPICS[0])
+  const [topic, setTopic] = useState(lockedTopic ?? DEFAULT_TOPICS[0])
   const pendingTopicRef = useRef<string | null>(null)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -51,7 +79,7 @@ export default function ContactForm() {
       if (raw) {
         const { topic: t, message: m } = JSON.parse(raw) as { topic?: string; message?: string }
         sessionStorage.removeItem('contactFormPrefill')
-        if (t) {
+        if (t && !lockedTopic) {
           pendingTopicRef.current = t
           setTopic(prev => {
             if (topics.includes(t)) return t
@@ -72,6 +100,7 @@ export default function ContactForm() {
   }, [])
 
   useEffect(() => {
+    if (lockedTopic) return
     api.getContactTopics()
       .then(data => {
         if (data?.length) {
@@ -136,9 +165,9 @@ export default function ContactForm() {
         {/* Правая часть — форма */}
         <div className="flex-1 px-4 py-8 lg:px-10 lg:py-12 flex flex-col gap-5">
           <div>
-            <h2 className="text-2xl lg:text-3xl font-bold text-white">Заявка</h2>
+            <h2 className="text-2xl lg:text-3xl font-bold text-white">{title}</h2>
             <p className="mt-2 text-brand-gray text-xs lg:text-sm leading-relaxed max-w-md">
-              Тут можно оставить заявку, для того чтобы наши менеджера связались с вами в удобное время
+              {description}
             </p>
           </div>
 
@@ -147,13 +176,22 @@ export default function ContactForm() {
             <FormInput label="Телефон" type="tel" value={phone} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPhone(applyPhoneMask(e.target.value))} />
             <FormInput label="Email" type="email" value={email} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value)} />
             <FormInput label="Наименование организации" type="text" value={company} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setCompany(e.target.value)} />
-            <FormInput label="ИНН" type="text" value={inn} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setInn(e.target.value.replace(/\D/g, '').slice(0, 12))} />
-            <FormInput label="Текст сообщения" multiline rows={3} value={message} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setMessage(e.target.value)} />
-
+            {showInn && (
+              <FormInput label="ИНН" type="text" value={inn} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setInn(e.target.value.replace(/\D/g, '').slice(0, 12))} />
+            )}
             <div>
-              <p className="text-brand-gray text-xs mb-2">Тема обращения</p>
-              <FormSelect label="" options={topics} value={topic} onChange={setTopic} />
+              <FormInput label={messageLabel} multiline rows={3} value={message} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setMessage(e.target.value)} />
+              {messageHint && (
+                <p className="text-white/35 text-[11px] leading-relaxed mt-2">{messageHint}</p>
+              )}
             </div>
+
+            {!lockedTopic && (
+              <div>
+                <p className="text-brand-gray text-xs mb-2">Тема обращения</p>
+                <FormSelect label="" options={topics} value={topic} onChange={setTopic} />
+              </div>
+            )}
 
             <div className="flex flex-col gap-3 mt-1">
               <FormCheckbox checked={consent} onChange={setConsent}>
@@ -168,8 +206,10 @@ export default function ContactForm() {
             </div>
 
             <Button type="submit" variant="catalog" disabled={!consent || sending} className="mt-2 w-full lg:w-auto lg:self-start">
-              {sent ? 'Отправлено!' : sending ? 'Отправка...' : 'Отправить'}
+              {sent ? 'Отправлено!' : sending ? 'Отправка...' : submitLabel}
             </Button>
+
+            {note && <p className="text-white/35 text-[11px] leading-relaxed">{note}</p>}
           </form>
         </div>
 

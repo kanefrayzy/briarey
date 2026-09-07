@@ -64,7 +64,7 @@ const navColumns = [
   },
   {
     heading: 'Группа компаний',
-    links: ['О компании', 'Диллерам'],
+    links: ['О компании', 'Дилерам'],
     hrefs: ['/about', '/dealers'],
   },
 ]

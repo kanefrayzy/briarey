@@ -68,7 +68,7 @@ export default function Header({ settings: settingsProp }: HeaderProps) {
       <div className="hidden md:block w-full border-b border-white/5" style={{ background: '#0e151b' }}>
         <div className="max-w-[1440px] mx-auto px-6 py-1.5 flex flex-wrap items-center justify-center gap-x-8 gap-y-1 text-xs text-white/90">
           <Link href="/about" className="hover:text-white transition-colors">О компании</Link>
-          <Link href="/dealers" className="hover:text-white transition-colors">Диллерам</Link>
+          <Link href="/dealers" className="hover:text-white transition-colors">Дилерам</Link>
           <Link href="/delivery" className="hover:text-white transition-colors">Доставка</Link>
           <a href={`tel:${phone1.replace(/[^\d+]/g, '')}`} className="flex items-center gap-1.5 hover:text-white transition-colors">
             <PhoneIcon />{phone1}

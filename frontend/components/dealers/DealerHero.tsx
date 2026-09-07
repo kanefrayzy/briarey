@@ -8,9 +8,9 @@ interface DealerHeroProps {
 }
 
 export default function DealerHero({ data }: DealerHeroProps) {
-  const title = data?.hero_title || 'Наша продукция\nв вашем магазине'
-  const description = data?.hero_description || 'Если вам близки ответственность, точность и системный подход — будем рады видеть вас в нашей команде.'
-  const buttonText = data?.hero_button_text || 'Получить презентацию'
+  const title = data?.hero_title || 'Продукция БРИАРЕЙ\nв вашем ассортименте'
+  const description = data?.hero_description || 'Расширьте предложение оборудованием для газо- и дымоудаления российского производства. 95% ассортимента мы производим самостоятельно и обеспечиваем партнёров технической документацией и консультационной поддержкой.'
+  const buttonText = data?.hero_button_text || 'Предложить сотрудничество'
   const heroImage = data?.hero_image ? storageUrl(data.hero_image) : '/images/dealer/dealer.png'
 
   const CardContent = () => (
@@ -22,7 +22,7 @@ export default function DealerHero({ data }: DealerHeroProps) {
       <p className="text-white/70 text-sm leading-relaxed">
         {description}
       </p>
-      <Button variant="calculator" className="self-start mt-1">
+      <Button variant="calculator" href="#contact-form" className="self-start mt-1">
         {buttonText}
       </Button>
     </>
