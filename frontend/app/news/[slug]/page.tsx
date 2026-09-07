@@ -19,14 +19,16 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = await api.getNewsDetail(params.slug).catch(() => null)
   if (!item) return { title: 'Новость' }
+  const metaTitle = item.meta_title || item.title
+  const metaDescription = item.meta_description || item.excerpt
   return {
-    title: item.title,
-    description: item.excerpt,
+    title: metaTitle,
+    description: metaDescription,
     alternates: { canonical: `/news/${params.slug}` },
     openGraph: {
       type: 'article',
-      title: item.title,
-      description: item.excerpt,
+      title: metaTitle,
+      description: metaDescription,
       url: `${SITE_URL}/news/${params.slug}`,
       images: item.image ? [{ url: storageUrl(item.image), alt: item.title }] : undefined,
     },

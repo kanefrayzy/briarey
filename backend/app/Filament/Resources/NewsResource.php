@@ -35,6 +35,16 @@ class NewsResource extends Resource
                 Forms\Components\Toggle::make('is_published')->label('Опубликована')->default(true),
             ])->columns(2),
 
+            Schemas\Components\Section::make('SEO')->schema([
+                Forms\Components\TextInput::make('meta_title')
+                    ->label('Заголовок для поисковиков')
+                    ->helperText('Если пусто — используется обычный заголовок новости'),
+                Forms\Components\Textarea::make('meta_description')
+                    ->label('Описание для поисковиков')
+                    ->rows(3)
+                    ->helperText('Если пусто — используется краткое описание'),
+            ])->collapsed(),
+
             Schemas\Components\Section::make('Содержимое')->schema([
                 Forms\Components\Repeater::make('contentBlocks')
                     ->relationship()

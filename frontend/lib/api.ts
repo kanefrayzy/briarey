@@ -174,6 +174,10 @@ export interface NewsItem {
   slug: string;
   title: string;
   excerpt: string;
+  /** Заголовок для поисковой выдачи; если пусто — берём title */
+  meta_title?: string | null;
+  /** Описание для поисковой выдачи; если пусто — берём excerpt */
+  meta_description?: string | null;
   date: string;
   image: string | null;
   is_featured: boolean;
